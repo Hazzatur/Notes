@@ -1,0 +1,13 @@
+To start, open your Crysis Launch Properties. 
+
+If you have an AMD processor with 8 cores, set the following launch command:
+
+C:\Windows\System32\cmd.exe /C start "" /affinity FE "C:\Program Files (x86)\Steam\steamapps\common\Crysis\Bin32\Crysis.exe" %command%
+
+I have a 6-core AMD (FX 6300), so my command is:
+C:\Windows\System32\cmd.exe /C start "" /affinity 3E "C:\Program Files (x86)\Steam\steamapps\common\Crysis\Bin32\Crysis.exe" %command%
+
+If you have a 4 core FX, try this:
+C:\Windows\System32\cmd.exe /C start "" /affinity E "C:\Program Files (x86)\Steam\steamapps\common\Crysis\Bin32\Crysis.exe" %command%
+
+Done!

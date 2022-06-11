@@ -1,0 +1,282 @@
+# RPM Fusion
+sudo dnf install \
+https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+
+sudo dnf install \
+https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+sudo dnf upgrade --refresh -y
+
+# Remove default packages
+sudo dnf remove gnome-tour libreoffice-core rhythmbox totem evince
+sudo dnf install ffmpeg-libs --allowerasing
+
+# Install packages
+sudo dnf install vlc neovim thunderbird okular megasync nautilus-megasync lollypop xournalpp qbittorrent calibre gimp krita google-chrome-stable steam lpf-spotify-client gnome-tweaks gnome-extensions-app watchman lua clang cmake ninja-build gtk3-devel git-credential-libsecret colordiff maven -y
+
+# snap
+sudo dnf install snapd -y
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+
+# snap packages
+sudo snap install opera authy wps-office-multilang
+
+# Anaconda
+sudo tee -a /usr/share/applications/anaconda.desktop > /dev/null <<EOT
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Anaconda-Navigator
+GenericName=Anaconda
+Comment=Scientific Python Development Environment - Python3
+Exec='/home/alex/anaconda3/bin/anaconda-navigator'
+Categories=Development;Science;IDE;Qt;Education;
+Icon=/home/alex/anaconda3/lib/python3.9/site-packages/anaconda_navigator/static/images/anaconda-icon-256x256.png
+Terminal=false
+StartupNotify=true
+MimeType=text/x-python;
+EOT
+
+# authy
+# Download latest snap from https://aur.archlinux.org/packages/authy
+sudo unsquashfs -q -f -d "/opt/authy" "AUTHY.snap"
+cd /opt/authy
+sudo sed -i 's|${SNAP}/meta/gui/icon.png|authy|g' "/opt/authy/meta/gui/authy.desktop"
+sudo cp meta/gui/authy.desktop /usr/share/applications
+sudo cp meta/gui/icon.png /usr/share/pixmaps/authy.png
+sudo m -rf "/opt/authy"/{data-dir,gnome-platform,lib,meta,scripts,usr,*.sh}
+sudo ln -s /opt/authy/authy /usr/bin
+
+# Calibre
+sudo sed -i 's/Name=calibre/Name=Calibre/g' /usr/share/applications/calibre-gui.desktop
+sudo sed -i '0,/Exec=/!{0,/Exec=/s/Exec=/Exec=env CALIBRE_USE_DARK_PALETTE=1 /}' /usr/share/applications/calibre-gui.desktop
+
+# Docker
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io
+
+# docker-compose 1.29.2
+sudo curl -SL https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo systemctl enable --now docker
+
+# docker compose plugin (Compose v2)
+sudo dnf install docker-compose-plugin
+
+sudo systemctl enable --now containerd
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+# droidcam
+sudo dnf install libappindicator-gtk3 -y
+cd /tmp
+wget -O droidcam_latest.zip https://files.dev47apps.net/linux/droidcam_1.8.2.zip
+sudo unzip droidcam_latest.zip -d /opt/droidcam
+cd droidcam && sudo ./install-client
+sudo ./install-video
+
+# Flutter
+# https://docs.flutter.dev/development/tools/sdk/releases?tab=linux
+sudo tar xvf FLUTTER.tar.xz -C /opt
+sudo groupadd flutterusers
+sudo gpasswd -a $USER flutterusers
+sudo chown -R :flutterusers /opt/flutter
+sudo chmod -R g+w /opt/flutter/
+# Add to .zshrc
+    # Flutter
+    export PATH="$PATH:/opt/flutter/bin"
+    export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
+flutter doctor
+
+# GitKraken
+cd /tmp
+wget https://release.gitkraken.com/linux/gitkraken-amd64.rpm
+sudo dnf install ./gitkraken-amd64.rpm -y
+
+# MATLAB
+unzip -K MATLAB.zip -d matlab
+# Error (Unable to launch the MATLABWindow application)
+# ./bin/glnxa64/MATLABWindow, output: FT_Get_Color_Glyph_Layer
+# export LD_PRELOAD=/lib64/libfreetype.so
+su
+./install
+sudo tee -a /usr/share/applications/matlab.desktop > /dev/null <<EOT
+[Desktop Entry]
+Type=Application
+Terminal=false
+MimeType=text/x-matlab
+Exec=env LD_PRELOAD=/lib64/libfreetype.so /usr/local/MATLAB/R2022a/bin/matlab -desktop
+Name=MATLAB
+Icon=matlab
+Categories=Development;Math;Science
+Comment=Scientific computing environment
+StartupNotify=true
+EOT
+
+# MultiMC
+cd /tmp
+wget https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz
+sudo tar -xzf mmc-stable-lin64.tar.gz -C /opt
+sudo ln -s /opt/MultiMC/MultiMC /usr/bin/multimc
+sudo tee -a /usr/share/applications/multimc.desktop > /dev/null <<EOT
+[Desktop Entry]
+Version=1.0
+Name=MultiMC
+GenericName=Minecraft Launcher
+Comment=Free, open source launcher and instance manager for Minecraft.
+Type=Application
+Terminal=false
+Exec=multimc
+Icon=/usr/share/icons/hicolor/scalable/apps/multimc.svg
+Categories=Game
+Keywords=game;minecraft;
+EOT
+
+# MS Teams
+# https://packages.microsoft.com/yumrepos/ms-teams/
+sudo dnf install TEAMS.rpm
+
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install 16
+nvm install 10
+
+# JAVA (sudo alternatives --config java)
+# OpenJDK
+sudo dnf install java-11-openjdk-devel.x86_64 java-latest-openjdk-devel.x86_64 -y
+# Oracle
+sudo mkdir /usr/local/java
+sudo tar xvzf Downloads/JDK.tar.gz -C /usr/local/java
+sudo nano /etc/profile
+    JAVA_HOME=/usr/local/java/JDK
+    PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+    export JAVA_HOME
+    export PATH
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/JDK/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/JDK/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javaws.itweb" "javaws.itweb" "/usr/local/java/JDK/bin/javaws.itweb" 1
+
+sudo update-alternatives --set java /usr/local/java/JDK/bin/java
+sudo update-alternatives --set javac /usr/local/java/JDK/bin/javac
+sudo update-alternatives --set javaws.itweb /usr/local/java/JDK/bin/javaws.itweb
+
+# Opera (snap)
+# Edit .desktop file /var/lib/snapd/desktop/applications 
+# StartupWMClass=Opera
+
+# Postman
+# download https://www.postman.com/downloads/
+sudo tar xzvf POSTMAN.tar.gz -C /opt
+sudo ln -s /opt/Postman/Postman /usr/local/bin/postman
+sudo tee -a /usr/share/applications/postman.desktop > /dev/null <<EOT
+[Desktop Entry]
+Name=Postman
+GenericName=API Client
+X-GNOME-FullName=Postman API Client
+Comment=Make and view REST API calls and responses
+Keywords=api;
+Exec=/usr/local/bin/postman
+Terminal=false
+Type=Application
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Categories=Development;Utilities;
+EOT
+
+# QEMU-KVM
+sudo dnf group install --with-optional virtualization -y
+sudo systemctl enable --now libvirtd.service
+sudo nano /etc/libvirt/libvirtd.conf
+    unix_sock_group = "libvirt"
+    unix_sock_rw_perms = "0770"
+sudo usermod -a -G libvirt alex
+newgrp libvirt
+sudo systemctl restart libvirtd.service
+sudo virsh net-list --all
+sudo virsh net-start default
+sudo virsh net-autostart default
+
+# ProtonGE
+# https://github.com/GloriousEggroll/proton-ge-custom/releases
+mkdir ~/.steam/root/compatibilitytools.d
+tar -xf GE-ProtonVERSION.tar.gz -C ~/.steam/root/compatibilitytools.d/
+
+# scrcpy
+sudo dnf copr enable zeno/scrcpy
+sudo dnf install scrcpy
+
+# Spotify
+lpf update
+
+# TP-Link TL-WN823N
+cd /opt
+sudo git clone https://github.com/Mange/rtl8193eu-linux-driver
+cd rtl8192eu-linux-driver
+sudo dkms add .
+sudo dkms install rtl8192eu/1.0
+sudo echo -e "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/blacklist.conf
+sudo depmod -a
+# reboot
+
+# VSCode
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update
+sudo dnf install code
+
+# WINE dependecy hell
+sudo dnf install alsa-plugins-pulseaudio.i686 glibc-devel.i686 glibc-devel libgcc.i686 libX11-devel.i686 freetype-devel.i686 libXcursor-devel.i686 libXi-devel.i686 libXext-devel.i686 libXxf86vm-devel.i686 libXrandr-devel.i686 libXinerama-devel.i686 mesa-libGLU-devel.i686 mesa-libOSMesa-devel.i686 libXrender-devel.i686 libpcap-devel.i686 ncurses-devel.i686 libzip-devel.i686 lcms2-devel.i686 zlib-devel.i686 libv4l-devel.i686 libgphoto2-devel.i686 cups-devel.i686 libxml2-devel.i686 openldap-devel.i686 libxslt-devel.i686 gnutls-devel.i686 libpng-devel.i686 flac-libs.i686 json-c.i686 libICE.i686 libSM.i686 libXtst.i686 libasyncns.i686 liberation-narrow-fonts.noarch libieee1284.i686 libogg.i686 libsndfile.i686 libuuid.i686 libva.i686 libvorbis.i686 libwayland-client.i686 libwayland-server.i686 llvm-libs.i686 mesa-dri-drivers.i686 mesa-filesystem.i686 mesa-libEGL.i686 mesa-libgbm.i686 nss-mdns.i686 ocl-icd.i686 pulseaudio-libs.i686 sane-backends-libs.i686 tcp_wrappers-libs.i686 unixODBC.i686 samba-common-tools.x86_64 samba-libs.x86_64 samba-winbind.x86_64 samba-winbind-clients.x86_64 samba-winbind-modules.x86_64 mesa-libGL-devel.i686 fontconfig-devel.i686 libXcomposite-devel.i686 libtiff-devel.i686 openal-soft-devel.i686 mesa-libOpenCL-devel.i686 opencl-utils-devel.i686 alsa-lib-devel.i686 gsm-devel.i686 libjpeg-turbo-devel.i686 pulseaudio-libs-devel.i686 pulseaudio-libs-devel gtk3-devel.i686 libattr-devel.i686 libva-devel.i686 libexif-devel.i686 libexif.i686 glib2-devel.i686 mpg123-devel.i686 mpg123-devel.x86_64 libcom_err-devel.i686 libcom_err-devel.x86_64 libFAudio-devel.i686 libFAudio-devel.x86_64
+
+sudo dnf groupinstall "C Development Tools and Libraries"
+sudo dnf groupinstall "Development Tools"
+
+sudo dnf install wine
+
+# xpadneo
+sudo dnf install dkms make bluez bluez-tools kernel-devel-`uname -r` kernel-headers-`uname -r`
+cd /opt
+sudo git clone https://github.com/atar-axis/xpadneo.git
+cd xpadneo
+sudo ./install.sh
+
+# YUZU
+# https://github.com/yuzu-emu/yuzu-mainline/releases
+sudo tar xvf YUZU.tar.xz YUZU/yuzu YUZU/yuzu-cmd -C /usr/bin
+
+sudo tee -a /usr/share/applications/yuzu.desktop > /dev/null <<EOT
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=yuzu
+GenericName=Switch Emulator
+Comment=Nintendo Switch video game console emulator
+Icon=yuzu
+TryExec=yuzu
+Exec=yuzu %f
+Categories=Game;Emulator;Qt;
+MimeType=application/x-nx-nro;application/x-nx-nso;application/x-nx-nsp;application/x-nx-xci;
+Keywords=Switch;Nintendo;
+EOT
+
+sudo tee -a /usr/share/icons/hicolor/scalable/apps/yuzu.svg > /dev/null <<EOT
+<svg id="svg815" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 614.4 682.67"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#ff3c28;}.cls-4{fill:#0ab9e6;}</style><clipPath id="clip-path"><rect class="cls-1" x="-43" y="-46.67" width="699.6" height="777.33"/></clipPath></defs><title>Artboard 1</title><g id="g823"><g id="right"><g class="cls-2"><g id="g827"><g id="g833"><path id="path835" class="cls-3" d="M340.81,138V682.08c150.26,0,272.06-121.81,272.06-272.06S491.07,138,340.81,138M394,197.55a219.06,219.06,0,0,1,0,424.94V197.55"/></g></g></g></g><g id="left"><g class="cls-2"><g id="g839"><g id="g845"><path id="path847" class="cls-4" d="M272.79,1.92C122.53,1.92.73,123.73.73,274s121.8,272.07,272.06,272.07ZM219.65,61.51v425A219,219,0,0,1,118,119.18,217.51,217.51,0,0,1,219.65,61.51"/></g></g></g></g></g></svg>
+EOT
+
+# ZSH
+wget https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+sudo dnf install zsh exa
+chsh -s /usr/bin/zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
+nano .zshrc
+# Replace ZSH_THEME="powerlevel10k/powerlevel10k"
+# Add plugins=(git zsh-syntax-highlighting zsh-autosuggestions docker docker-compose conda-zsh-completion)
+
