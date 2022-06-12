@@ -151,6 +151,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 nvm install 16
 nvm install 10
 
+# NVIDIA Gpu
+sudo dnf install akmod-nvidia
+
 # JAVA (sudo alternatives --config java)
 # OpenJDK
 sudo dnf install java-11-openjdk-devel.x86_64 java-latest-openjdk-devel.x86_64 -y
