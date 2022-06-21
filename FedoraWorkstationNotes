@@ -163,6 +163,14 @@ sudo dnf install TEAMS.rpm
 
 # NVIDIA Gpu
 sudo dnf install akmod-nvidia
+# Install latest drivers from website MX450 https://www.nvidia.com/Download/driverResults.aspx/189809/en-us/
+# Installer adds nouveau automatically to files:
+# /usr/lib/modprobe.d/nvidia-installer-disable-nouveau.conf,                                                  
+# /etc/modprobe.d/nvidia-installer-disable-nouveau.conf
+# Or manually add to /usr/lib/modprobe.d/blacklist-nouveau.conf
+    # blacklist nouveau
+    # options nouveau modeset=0
+    # sudo dracut --force
 
 # nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
