@@ -49,7 +49,7 @@ cd /opt/authy
 sudo sed -i 's|${SNAP}/meta/gui/icon.png|authy|g' "/opt/authy/meta/gui/authy.desktop"
 sudo cp meta/gui/authy.desktop /usr/share/applications
 sudo cp meta/gui/icon.png /usr/share/pixmaps/authy.png
-sudo m -rf "/opt/authy"/{data-dir,gnome-platform,lib,meta,scripts,usr,*.sh}
+sudo rm -rf "/opt/authy"/{data-dir,gnome-platform,lib,meta,scripts,usr,*.sh}
 sudo ln -s /opt/authy/authy /usr/bin
 
 # Calibre
@@ -324,3 +324,6 @@ nano .zshrc
 # Replace ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add plugins=(git zsh-syntax-highlighting zsh-autosuggestions docker docker-compose conda-zsh-completion)
 
+# Pipewire
+# Disable Auto mute to change between headphones and line out seamlessly
+amixer -c 0 sset 'Auto-Mute Mode' Disabled

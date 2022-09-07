@@ -1,0 +1,60 @@
+[Screen config lightdm]
+/etc/lightdm/lightdm.conf
+    [Seat:*]
+    display-setup-script=/home/hazzatur/.screenlayout/screens.sh
+~/.screenlayout/screens.sh
+    #!/bin/sh
+    xrandr --output DisplayPort-0 --off --output DisplayPort-1 --mode 1920x1080 --pos 1920x262 --rotate normal --output DisplayPort-2 --mode 1920x1080 --pos 3840x0 --rotate left --output HDMI-A-0 --mode 1920x1080 --pos 0x232 --rotate normal --output DVI-D-0 --off
+
+[Mount drives]
+ls -lha /dev/disk/by-uuid/
+/etc/fstab
+    UUID=3165142b-daf2-4957-bdd8-ee12a9a207e8    /home/hazzatur/SSD     ext4    defaults,noatime 0 2
+    UUID=b879aa82-ad7f-435c-8c04-4375166eb51c    /home/hazzatur/HDD      ext4    defaults,noatime 0 2
+    UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90    /home/hazzatur/HDD2     ext4    defaults,noatime 0 2
+    UUID=d70138d5-5979-4a67-8b0d-a4db0f621204    /home/hazzatur/HDD3      ext4    defaults,noatime 0 2
+
+
+yay -S docker docker-compose
+sudo usermod -aG docker
+sudo systemctl enable --now docker
+sudo systemctl enable --now containerd.service
+yay -S opera
+yay -S google-chrome
+yay -S mugshot
+yay -S arandr
+yay -S opera
+yay -S gruvbox-dark-gtk
+yay -S gruvbox-dark-icons-gtk
+yay -S zsh
+yay -S exa
+yay -S bat
+yay -S libsecret
+yay -S jdk8-openjdk jdk11-openjdk jdk-openjdk
+yay -S jetbrains-toolbox
+yay -S neovim
+curl -L https://bit.ly/n-install | bash
+yay -S rustup
+yay -S cargo
+rustup default stable
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+yay -S tmux
+yay -S ripgrep
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+yay -S ncurses5-compat-libs
+yay -S discord
+yay -S watchman-bin
+yay -S maven
+yay -S gitkraken
+yay -S spotify
+yay -S teams
+yay -S thunar-megasync-bin 
+yay -S megasync-bin
+yay -S vlc
+yay -S obs-studio
+yay -S obs-backgroundremoval
+yay -S v4l2loopback-dkms
+yay -S rtl8192eu
