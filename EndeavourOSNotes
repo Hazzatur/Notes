@@ -56,7 +56,7 @@ vlc \
 obs-studio \
 v4l2loopback-dkms 
 
-sudo usermod -aG docker
+sudo usermod -aG docker $USER
 sudo systemctl enable --now docker
 sudo systemctl enable --now containerd.service
 rustup default stable
