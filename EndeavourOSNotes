@@ -74,7 +74,7 @@ spotify \
 teams \
 thunar-megasync-bin \
 megasync-bin \
-obs-background removal
+obs-backgroundremoval
 
 [Extra]
 curl -L https://bit.ly/n-install | bash
