@@ -78,7 +78,8 @@ megasync-bin thunar-megasync-bin \
 obs-backgroundremoval \
 visual-studio-code-bin \
 charles \
-birdtray
+birdtray \
+xone-dkms
 
 [Extra]
 curl -L https://bit.ly/n-install | bash
@@ -113,3 +114,17 @@ ssh -T git@github.com
 [Allow Headphones and Speakers]
 amixer -c 1 sset 'Auto-Mute Mode' Disabled
 
+[QEMU]
+# Verify packages
+sudo pacman -S qemu-full virt-manager virt-viewer dnsmasq vde2 bridge-utils openbsd-netcat libguestfs
+sudo pacman -S ebtables iptables dnsmasq nftables
+sudo systemctl enable --now libvirtd.service
+sudo sed -i "s/#unix_sock_group*/unix_sock_group/g" /etc/libvirt/libvirtd.conf
+sudo sed -i "s/#unix_sock_rw_perms*/unix_sock_rw_perms/g" /etc/libvirt/libvirtd.conf
+sudo usermod -aG libvirt $USER
+newgrp libvirt
+sudo systemctl restart libvirtd.service
+
+[Bluetooth]
+sudo systemctl enable --now bluetooth
+sudo pacman -S blueberry
