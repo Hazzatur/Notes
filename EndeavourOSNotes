@@ -89,3 +89,8 @@ sudo dkms install rtl8192eu/1.0
 sudo echo -e "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/blacklist.conf
 sudo depmod -a
 # Reboot
+
+[SSH]
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/key
+ssh -T git@github.com
