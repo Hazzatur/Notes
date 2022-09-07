@@ -54,7 +54,9 @@ discord \
 maven \
 vlc \
 obs-studio \
-v4l2loopback-dkms 
+v4l2loopback-dkms \
+xfce4-clipman-plugin \
+thunderbird
 
 sudo usermod -aG docker $USER
 sudo systemctl enable --now docker
@@ -72,9 +74,11 @@ watchman-bin \
 gitkraken \
 spotify \
 teams \
-thunar-megasync-bin \
-megasync-bin \
-obs-backgroundremoval
+megasync-bin thunar-megasync-bin \
+obs-backgroundremoval \
+visual-studio-code-bin \
+charles \
+birdtray
 
 [Extra]
 curl -L https://bit.ly/n-install | bash
@@ -105,4 +109,7 @@ sudo depmod -a
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/key
 ssh -T git@github.com
+
+[Allow Headphones and Speakers]
+amixer -c 1 sset 'Auto-Mute Mode' Disabled
 
