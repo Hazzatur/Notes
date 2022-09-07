@@ -14,7 +14,22 @@ ls -lha /dev/disk/by-uuid/
     UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90    /home/hazzatur/HDD2     ext4    defaults,noatime 0 2
     UUID=d70138d5-5979-4a67-8b0d-a4db0f621204    /home/hazzatur/HDD3      ext4    defaults,noatime 0 2
 
+[Steam & ProtonGE]
+AMD:
+sudo pacman -S --needed lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 
+NVIDIA:
+sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+
+WINE DEPENDENCY HELL:
+sudo pacman -Sy
+sudo pacman -S wine-staging winetricks
+sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
+
+yay -S steam
+yay -S proton-ge-custom-bin
+
+[Yay]
 yay -S docker docker-compose
 sudo usermod -aG docker
 sudo systemctl enable --now docker
