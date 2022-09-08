@@ -58,7 +58,8 @@ v4l2loopback-dkms \
 xfce4-clipman-plugin \
 thunderbird \
 gnome-keyring seahorse \
-noto-fonts-emoji
+noto-fonts-emoji \
+xcolor
 
 sudo usermod -aG docker $USER
 sudo systemctl enable --now docker
@@ -80,8 +81,11 @@ megasync-bin thunar-megasync-bin \
 obs-backgroundremoval \
 visual-studio-code-bin \
 charles \
-birdtray \
-xone-dkms
+birdtray
+
+[Xbox Controller]
+yay -S xone-dkms # Dongle
+yay -S xpadneo-dkms-git # Bluetooth
 
 [Extra]
 curl -L https://bit.ly/n-install | bash
