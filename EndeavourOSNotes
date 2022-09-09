@@ -59,7 +59,15 @@ xfce4-clipman-plugin \
 thunderbird \
 gnome-keyring seahorse \
 noto-fonts-emoji \
-xcolor
+xcolor \
+gimp \
+krita \
+xournalpp \
+qbittorrent \
+calibre \
+lollypop \
+okular \
+scrcpy
 
 sudo usermod -aG docker $USER
 sudo systemctl enable --now docker
@@ -81,7 +89,12 @@ megasync-bin thunar-megasync-bin \
 obs-backgroundremoval \
 visual-studio-code-bin \
 charles \
-birdtray
+birdtray \
+postman-bin \
+authy \
+wps-office \
+wps-office-mime \
+wps-office-all-dicts-win-languages
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
@@ -111,6 +124,13 @@ sudo dkms install rtl8192eu/1.0
 sudo echo -e "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/blacklist.conf
 sudo depmod -a
 # Reboot
+
+# Test pending for next install
+# yay -S rtl8192eu 
+# sudo echo -e "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/blacklist.conf
+# sudo depmod -a
+# sudo mkinitcpio -P
+# # Reboot
 
 [SSH]
 eval "$(ssh-agent -s)"
@@ -146,3 +166,26 @@ sudo virsh net-autostart default
 sudo systemctl enable --now bluetooth
 sudo pacman -S blueberry
 
+[MS Fonts]
+# Put fonts in ~/ttf_ms_win10 folder
+git clone https://aur.archlinux.org/ttf-ms-win10.git "$HOME/.cache/yay/ttf-ms-win10"
+cp -a "$HOME/ttf_ms_win10/." "$HOME/.cache/yay/ttf-ms-win10" 
+yay -S ttf-ms-win10
+
+[Games]
+sudo pacman -S retroarch \
+ppsspp \
+pcsx2
+
+yay -S yuzu-mainline-bin \
+rpcs3-bin \
+cemu-wine \ # Replace with 'cemu' or 'cemu-git' when stable
+dolphin-emu-git \
+citra-qt-git
+
+yay -S polymc
+
+[HUION Tablet]
+# Test pending
+yay -S huiontablet # See if needed as it's already detected and seems to work
+yay -S ptxconf-git # or 'kcm-wacomtablet' see if KDE's depenencies needed
