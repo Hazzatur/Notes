@@ -12,7 +12,11 @@ sudo update-grub
     display-setup-script=/home/hazzatur/.screenlayout/screens.sh
 ~/.screenlayout/screens.sh
     #!/bin/sh
-    xrandr --output DisplayPort-0 --off --output DisplayPort-1 --mode 1920x1080 --pos 1920x262 --rotate normal --output DisplayPort-2 --mode 1920x1080 --pos 3840x0 --rotate left --output HDMI-A-0 --mode 1920x1080 --pos 0x232 --rotate normal --output DVI-D-0 --off
+    xrandr --output DisplayPort-0 --off 
+    xrandr --output DisplayPort-1 --mode 1920x1080 --pos 1920x290 --rotate normal 
+    xrandr --output DisplayPort-2 --mode 1920x1080 --pos 3840x0 --rotate left 
+    xrandr --output HDMI-A-0 --mode 1920x1080 --pos 0x302 --rotate normal 
+    xrandr --output DVI-D-0 --off
 
 [Mount drives]
 ls -lha /dev/disk/by-uuid/
