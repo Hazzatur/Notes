@@ -19,12 +19,13 @@ xrandr --output DVI-D-0 --off
 EOT
 
 [Mount drives]
-ls -lha /dev/disk/by-uuid/
-/etc/fstab
-    UUID=3165142b-daf2-4957-bdd8-ee12a9a207e8    /home/hazzatur/SSD     ext4    defaults,noatime 0 2
-    UUID=b879aa82-ad7f-435c-8c04-4375166eb51c    /home/hazzatur/HDD      ext4    defaults,noatime 0 2
-    UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90    /home/hazzatur/HDD2     ext4    defaults,noatime 0 2
-    UUID=d70138d5-5979-4a67-8b0d-a4db0f621204    /home/hazzatur/HDD3      ext4    defaults,noatime 0 2
+# ls -lha /dev/disk/by-uuid/ # To get UUID's
+sudo tee -a /etc/fstab > /dev/null <<EOT
+UUID=3165142b-daf2-4957-bdd8-ee12a9a207e8 $HOME/SSD    ext4    defaults,noatime 0 2
+UUID=b879aa82-ad7f-435c-8c04-4375166eb51c $HOME/HDD    ext4    defaults,noatime 0 2
+UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90 $HOME/HDD2    ext4    defaults,noatime 0 2
+UUID=d70138d5-5979-4a67-8b0d-a4db0f621204 $HOME/HDD3    ext4    defaults,noatime 0 2
+EOT
 
 [Steam & ProtonGE]
 AMD:
