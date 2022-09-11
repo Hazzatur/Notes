@@ -207,3 +207,8 @@ yay -S polymc
 # Test pending
 yay -S huiontablet # See if needed as it's already detected and seems to work
 yay -S ptxconf-git # or 'kcm-wacomtablet' see if KDE's depenencies needed
+
+[NVIDIA]
+# Undetected screen resolutions & xrandr not working
+# Get EDID from working screen using NVIDIA Settings save in /etc/X11
+sudo nvidia-xconfig --custom-edid="GPU-0.DP-2:/etc/X11/edid.bin"
