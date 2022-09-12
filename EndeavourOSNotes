@@ -11,11 +11,14 @@ mkdir "$HOME/.screenlayout/"
 sudo sed -i "s,#display-setup-script=.*,display-setup-script=$HOME/.screenlayout/screens.sh,g" /etc/lightdm/lightdm.conf
 tee -a $HOME/.screenlayout/screens.sh > /dev/null <<EOT
 #!/bin/sh
-xrandr --output DisplayPort-0 --off 
-xrandr --output DisplayPort-1 --mode 1920x1080 --pos 1920x290 --rotate normal 
-xrandr --output DisplayPort-2 --mode 1920x1080 --pos 3840x0 --rotate left 
-xrandr --output HDMI-A-0 --mode 1920x1080 --pos 0x302 --rotate normal 
-xrandr --output DVI-D-0 --off
+xrandr --output DP-0 --off \
+--output DP-1 --off \
+--output HDMI-0 --mode 1920x1080 --pos 0x260 --rotate normal \
+--output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left \
+--output DP-3 --off \
+--output HDMI-1 --off \
+--output DP-4 --off \
+--output DP-5 --primary --mode 1920x1080 --pos 1920x275 --rotate normal
 EOT
 
 [Mount drives]
@@ -28,16 +31,19 @@ UUID=d70138d5-5979-4a67-8b0d-a4db0f621204 $HOME/HDD3    ext4    defaults,noatime
 EOT
 
 [Add symlinks]
-rm -rf "$HOME/{Desktop,Documents,Downloads,Music,Pictures,Videos}"
+sed -i "s/XDG_DESKTOP_DIR=.*/XDG_DESKTOP_DIR=/g" $HOME/.config/user-dirs.dirs
+rm -rf $HOME/{Desktop,Documents,Downloads,Music,Pictures,Videos}
 ln -sf "$HOME/SSD/Calibre Library" "$HOME/Calibre Library" 
 ln -sf "$HOME/SSD/Desktop" "$HOME/Desktop" 
 ln -sf "$HOME/SSD/Documents" "$HOME/Documents"
 ln -sf "$HOME/SSD/Downloads" "$HOME/Downloads"
+ln -sf "$HOME/SSD/MEGA" "$HOME/MEGA"
 ln -sf "$HOME/SSD/Music" "$HOME/Music"
 ln -sf "$HOME/SSD/Personal" "$HOME/Personal"
 ln -sf "$HOME/SSD/Pictures" "$HOME/Pictures"
 ln -sf "$HOME/SSD/Videos" "$HOME/Videos"
 ln -sf "$HOME/SSD/Work" "$HOME/Work"
+sed -i 's,XDG_DESKTOP_DIR=,XDG_DESKTOP_DIR="$HOME/Desktop",g' $HOME/.config/user-dirs.dirs
 
 [Steam & ProtonGE]
 AMD:
@@ -85,7 +91,8 @@ qbittorrent \
 calibre \
 lollypop \
 okular \
-scrcpy
+scrcpy \
+python-pip
 
 sudo usermod -aG docker $USER
 sudo systemctl enable --now docker
@@ -134,21 +141,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
 
 [TP-Link TL-WN823N]
-cd /opt
-sudo git clone https://github.com/Mange/rtl8192eu-linux-driver
-cd rtl8192eu-linux-driver
-sudo dkms add .
-sudo dkms install rtl8192eu/1.0
+yay -S rtl8192eu
 sudo echo -e "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/blacklist.conf
 sudo depmod -a
+sudo mkinitcpio -P
 # Reboot
-
-# Test pending for next install
-# yay -S rtl8192eu 
-# sudo echo -e "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/blacklist.conf
-# sudo depmod -a
-# sudo mkinitcpio -P
-# # Reboot
 
 [SSH]
 eval "$(ssh-agent -s)"
@@ -197,7 +194,8 @@ pcsx2
 
 yay -S yuzu-mainline-bin \
 rpcs3-bin \
-cemu-wine \ # Replace with 'cemu' or 'cemu-git' when stable
+# Replace with 'cemu' or 'cemu-git' when stable
+cemu-wine \ 
 dolphin-emu-git \
 citra-qt-git
 
