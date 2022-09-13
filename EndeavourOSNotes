@@ -8,15 +8,32 @@ sudo update-grub
 
 [Screen config lightdm]
 mkdir "$HOME/.screenlayout/"
+mkdir -p "$HOME/.config/autostart/"
 sudo sed -i "s,#display-setup-script=.*,display-setup-script=$HOME/.screenlayout/screens.sh,g" /etc/lightdm/lightdm.conf
 tee -a $HOME/.screenlayout/screens.sh > /dev/null <<EOT
 #!/bin/sh
-#!/bin/sh
 xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x260 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x270 --rotate normal
+EOT
+tee -a $HOME/.config/autostart/screens.sh.desktop > /dev/null <<EOT
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=Screens.sh
+Comment=Fix screen pos
+Exec=/home/hazzatur/.screenlayout/screens.sh
+OnlyShowIn=XFCE;
+RunHook=0
+StartupNotify=false
+Terminal=false
+Hidden=false
 EOT
 
 [LightDM]
-sudo sed -i "s,background=.*,background=$HOME/Pictures/Wallpapers/james-arkwright-jamesarkwright-disperse-01.jpg,g" /etc/lightdm/slick-greeter.conf
+sudo cp $HOME/Pictures/Wallpapers/custom.png /usr/share/backgrounds/custom.png
+sudo sed -i "s,background=.*,background=/usr/share/backgrounds/custom.png,g" /etc/lightdm/slick-greeter.conf
+sudo sed -i "s,show-power=.*,show-power=true,g" /etc/lightdm/slick-greeter.conf
+sudo sed -i "s,background-color=.*,background-color=#000000,g" /etc/lightdm/slick-greeter.conf
 
 [Mount drives]
 # ls -lha /dev/disk/by-uuid/ # To get UUID's
