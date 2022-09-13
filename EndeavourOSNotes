@@ -21,6 +21,9 @@ xrandr --output DP-0 --off \
 --output DP-5 --primary --mode 1920x1080 --pos 1920x275 --rotate normal
 EOT
 
+[LightDM]
+sudo sed -i "s,background=.*,background=$HOME/Pictures/Wallpapers/james-arkwright-jamesarkwright-disperse-01-jpg,g" /etc/lightdm/slick-greeter.conf
+
 [Mount drives]
 # ls -lha /dev/disk/by-uuid/ # To get UUID's
 sudo tee -a /etc/fstab > /dev/null <<EOT
