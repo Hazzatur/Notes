@@ -63,7 +63,7 @@ yay -S proton-ge-custom-bin
 [Pacman]
 sudo pacman -S xclip \
 docker docker-compose  \
-opera \
+opera opera-ffmpeg-codecs \
 arandr \
 zsh \
 exa \
@@ -92,7 +92,8 @@ calibre \
 lollypop \
 okular \
 scrcpy \
-python-pip
+python-pip \
+ansible
 
 sudo usermod -aG docker $USER
 sudo systemctl enable --now docker
