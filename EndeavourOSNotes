@@ -134,7 +134,8 @@ postman-bin \
 authy \
 wps-office \
 wps-office-mime \
-wps-office-all-dicts-win-languages
+wps-office-all-dicts-win-languages \
+windscribe-cli
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
@@ -215,6 +216,8 @@ dolphin-emu-git \
 citra-qt-git
 
 yay -S polymc
+
+sudo pacman -S lutris
 
 [HUION Tablet]
 # Test pending
