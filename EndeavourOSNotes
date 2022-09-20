@@ -14,7 +14,7 @@ mkdir -p "$HOME/.config/autostart/"
 sudo sed -i "s,#display-setup-script=.*,display-setup-script=$HOME/.screenlayout/screens.sh,g" /etc/lightdm/lightdm.conf
 tee -a $HOME/.screenlayout/screens.sh > /dev/null <<EOT
 #!/bin/sh
-xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x260 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x270 --rotate normal
+xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x310 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x290 --rotate normal
 EOT
 tee -a $HOME/.config/autostart/screens.sh.desktop > /dev/null <<EOT
 [Desktop Entry]
@@ -138,7 +138,8 @@ authy \
 wps-office \
 wps-office-mime \
 wps-office-all-dicts-win-languages \
-windscribe-cli
+windscribe-cli \
+simplenote-electron-bin
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
