@@ -139,7 +139,8 @@ wps-office \
 wps-office-mime \
 wps-office-all-dicts-win-languages \
 windscribe-cli \
-simplenote-electron-bin
+simplenote-electron-bin \
+ookla-speedtest-bin
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
