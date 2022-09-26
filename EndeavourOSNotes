@@ -140,15 +140,16 @@ wps-office-mime \
 wps-office-all-dicts-win-languages \
 windscribe-cli \
 simplenote-electron-bin \
-ookla-speedtest-bin
+ookla-speedtest-bin \
+ventoy-bin
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
 yay -S xpadneo-dkms-git # Bluetooth
 
 [Extra]
-export N_PREFIX="$HOME/.n" && curl -L https://bit.ly/n-install | bash
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) # Check possible error with python depenencies and system pip
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
