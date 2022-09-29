@@ -109,7 +109,8 @@ lollypop \
 okular \
 scrcpy \
 python-pip \
-ansible
+ansible \
+flameshot
 
 sudo usermod -aG docker $USER
 sudo usermod -aG video $USER
