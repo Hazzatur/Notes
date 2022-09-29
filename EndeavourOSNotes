@@ -202,7 +202,6 @@ sudo virsh net-autostart default
 
 [Bluetooth]
 sudo systemctl enable --now bluetooth
-sudo pacman -S blueberry
 
 [MS Fonts]
 # Put fonts in ~/ttf_ms_win10 folder
