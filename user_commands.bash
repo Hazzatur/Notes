@@ -16,7 +16,7 @@ pacman -S steam
 
 # [LightDM]
 curl -o /home/$username/Pictures/Wallpapers/custom.png --create-dirs https://cdna.artstation.com/p/assets/images/images/035/982/154/large/james-arkwright-jamesarkwright-disperse-02-jpg.jpg?1616715433
-chown $username:$username custom.png
+chown -R $username:$username /home/$username/Pictures/
 cp /home/$username/Pictures/Wallpapers/custom.png /usr/share/backgrounds/custom.png
 sed -i "s,background=.*,background=/usr/share/backgrounds/custom.png,g" /etc/lightdm/slick-greeter.conf
 sed -i "s,show-power=.*,show-power=true,g" /etc/lightdm/slick-greeter.conf
@@ -54,3 +54,7 @@ pacman -S retroarch \
 ppsspp \
 pcsx2 \
 lutris
+
+# [Bluetooth]
+systemctl enable --now bluetooth
+
