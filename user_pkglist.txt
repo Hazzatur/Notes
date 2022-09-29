@@ -22,7 +22,8 @@ obs-studio
 v4l2loopback-dkms
 xfce4-clipman-plugin
 thunderbird
-gnome-keyring seahorse
+gnome-keyring
+seahorse
 noto-fonts-emoji
 xcolor
 gimp
