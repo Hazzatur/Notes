@@ -110,7 +110,8 @@ okular \
 scrcpy \
 python-pip \
 ansible \
-flameshot
+flameshot \
+btop
 
 sudo usermod -aG docker $USER
 sudo usermod -aG video $USER

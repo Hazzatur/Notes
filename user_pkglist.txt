@@ -44,3 +44,4 @@ lutris
 steam
 wine-staging
 winetricks
+btop
