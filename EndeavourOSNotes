@@ -87,7 +87,7 @@ bat \
 libsecret \
 jdk8-openjdk jdk11-openjdk jdk-openjdk \
 neovim \
-rustup cargo \
+rustup \
 tmux \
 ripgrep \
 discord \
