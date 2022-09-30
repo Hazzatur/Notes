@@ -41,7 +41,8 @@ sed -i "s/#unix_sock_group*/unix_sock_group/g" /etc/libvirt/libvirtd.conf
 sed -i "s/#unix_sock_rw_perms*/unix_sock_rw_perms/g" /etc/libvirt/libvirtd.conf
 usermod -aG libvirt $username
 systemctl enable libvirtd.service
-newgrp libvirt
-virsh net-start default
-virsh net-autostart default
+
+# TODO: Not working add to ansible playbook
+# virsh net-start default
+# virsh net-autostart default
 
