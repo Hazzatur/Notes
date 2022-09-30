@@ -37,3 +37,10 @@ scrcpy
 python-pip
 ansible
 flameshot
+retroarch
+ppsspp
+pcsx2
+lutris
+steam
+wine-staging
+winetricks
