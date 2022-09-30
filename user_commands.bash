@@ -12,8 +12,8 @@ chown -R $username:$username /home/$username/{MEGA,Personal,Work}
 sed -i "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/g" /etc/default/grub
 
 # [Wine dependency hell]
-pacman -S --noconfirm --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
-pacman -S --noconfirm giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
+pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
 
 # [LightDM]
 curl -o /home/$username/Pictures/Wallpapers/custom.png --create-dirs https://cdna.artstation.com/p/assets/images/images/035/982/154/large/james-arkwright-jamesarkwright-disperse-02-jpg.jpg?1616715433
@@ -35,7 +35,7 @@ usermod -aG video $username
 systemctl enable bluetooth
 
 # [QEMU]
-yes | pacman -S qemu-full virt-manager virt-viewer vde2 bridge-utils openbsd-netcat libguestfs iptables-nft dnsmasq nftables
+yes | pacman -S --noprogressbar --needed --disable-download-timeout qemu-full virt-manager virt-viewer vde2 bridge-utils openbsd-netcat libguestfs iptables-nft dnsmasq nftables
 
 sed -i "s/#unix_sock_group*/unix_sock_group/g" /etc/libvirt/libvirtd.conf
 sed -i "s/#unix_sock_rw_perms*/unix_sock_rw_perms/g" /etc/libvirt/libvirtd.conf
