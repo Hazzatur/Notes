@@ -37,6 +37,12 @@ scrcpy
 python-pip
 ansible
 flameshot
+btop
+pdfarranger
+filelight
+barrier
+ranger
+clang
 retroarch
 ppsspp
 pcsx2
@@ -44,4 +50,3 @@ lutris
 steam
 wine-staging
 winetricks
-btop

@@ -111,7 +111,12 @@ scrcpy \
 python-pip \
 ansible \
 flameshot \
-btop
+btop \
+pdfarranger \
+filelight \
+barrier \
+ranger \
+clang
 
 sudo usermod -aG docker $USER
 sudo usermod -aG video $USER
@@ -142,7 +147,8 @@ wps-office-mime \
 wps-office-all-dicts-win-languages \
 windscribe-cli \
 ookla-speedtest-bin \
-ventoy-bin
+ventoy-bin \
+joplin joplin-desktop
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
@@ -154,6 +160,10 @@ bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+[Flutter]
+yay -S flutter
+sudo usermod -aG flutterusers $USER
 
 [ZSH]
 yay -S ttf-meslo-nerd-font-powerlevel10k
