@@ -249,9 +249,19 @@ chmod -R 555 Origin
 # Days Gone: DXVK_ASYNC=1 gamemoderun %command%
 
 [HUION Tablet]
-# Test pending
-yay -S huiontablet # See if needed as it's already detected and seems to work
-yay -S ptxconf-git # or 'kcm-wacomtablet' see if KDE's depenencies needed
+# https://wiki.archlinux.org/title/Graphics_tablet#Remapping_buttons
+yay -S ptxconf-git
+
+sudo tee -a /usr/share/X11/xorg.conf.d/50-tablet.conf > /dev/null <<EOT
+Section "InputClass"
+    Identifier "Huion on wacom"
+    MatchProduct "HUION"
+    MatchDevicePath "/dev/input/event*"
+    Driver "wacom"
+EndSection
+EOT
+sudo ln -s /usr/share/X11/xorg.conf.d/50-tablet.conf /etc/X11/xorg.conf.d/50-tablet.conf
+# Reboot
 
 [NVIDIA]
 # Undetected screen resolutions & xrandr not working

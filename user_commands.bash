@@ -46,3 +46,14 @@ systemctl enable libvirtd.service
 # virsh net-start default
 # virsh net-autostart default
 
+# [Huion]
+tee -a /usr/share/X11/xorg.conf.d/50-tablet.conf > /dev/null <<EOT
+Section "InputClass"
+    Identifier "Huion on wacom"
+    MatchProduct "HUION"
+    MatchDevicePath "/dev/input/event*"
+    Driver "wacom"
+EndSection
+EOT
+ln -s /usr/share/X11/xorg.conf.d/50-tablet.conf /etc/X11/xorg.conf.d/50-tablet.conf
+
