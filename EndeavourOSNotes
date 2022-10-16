@@ -114,9 +114,9 @@ flameshot \
 btop \
 pdfarranger \
 filelight \
-barrier \
 ranger \
-clang
+clang \
+obsidian
 
 sudo usermod -aG docker $USER
 sudo usermod -aG video $USER
@@ -147,8 +147,7 @@ wps-office-mime \
 wps-office-all-dicts-win-languages \
 windscribe-cli \
 ookla-speedtest-bin \
-ventoy-bin \
-joplin joplin-desktop
+ventoy-bin
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle

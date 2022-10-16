@@ -40,9 +40,9 @@ flameshot
 btop
 pdfarranger
 filelight
-barrier
 ranger
 clang
+obsidian
 retroarch
 ppsspp
 pcsx2
