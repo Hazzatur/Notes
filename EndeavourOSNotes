@@ -147,7 +147,8 @@ wps-office-mime \
 wps-office-all-dicts-win-languages \
 windscribe-cli \
 ookla-speedtest-bin \
-ventoy-bin
+ventoy-bin \
+anaconda
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
@@ -266,3 +267,8 @@ sudo ln -s /usr/share/X11/xorg.conf.d/50-tablet.conf /etc/X11/xorg.conf.d/50-tab
 # Undetected screen resolutions & xrandr not working
 # Get EDID from working screen using NVIDIA Settings save in /etc/X11
 sudo nvidia-xconfig --custom-edid="GPU-0.DP-2:/etc/X11/edid.bin"
+
+[Anaconda]
+# Requieres .zshrc installed
+conda config --set auto_activate_base False
+
