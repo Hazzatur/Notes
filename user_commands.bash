@@ -57,3 +57,6 @@ EndSection
 EOT
 ln -s /usr/share/X11/xorg.conf.d/50-tablet.conf /etc/X11/xorg.conf.d/50-tablet.conf
 
+# [Anaconda]
+groupadd anaconda
+usermod -aG anaconda $username

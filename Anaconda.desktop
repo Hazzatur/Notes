@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Anaconda Navigator
+Comment=Launch applications and manage packages and environments without using command-line commands.
+GenericName=A desktop GUI that comes with Anaconda Individual Edition.
+Exec=/opt/anaconda/bin/anaconda-navigator
+Icon=/opt/anaconda/lib/python3.9/site-packages/anaconda_navigator/app/icons/Icon1024.png
+Type=Application
+StartupNotify=false
+StartupWMClass=Navigator
+Terminal=false
+Categories=Development;
+Keywords=anaconda;
