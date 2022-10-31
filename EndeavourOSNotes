@@ -77,46 +77,46 @@ sudo pacman -S steam
 yay -S proton-ge-custom-bin protontricks
 
 [Pacman]
-sudo pacman -S xclip \
-docker docker-compose  \
-opera opera-ffmpeg-codecs \
+sudo pacman -S ansible \
 arandr \
-zsh \
-exa \
 bat \
-libsecret \
-jdk8-openjdk jdk11-openjdk jdk-openjdk \
-neovim \
-rustup \
-tmux \
-ripgrep \
-discord \
-maven \
-vlc \
-obs-studio \
-v4l2loopback-dkms \
-xfce4-clipman-plugin \
-thunderbird \
-gnome-keyring seahorse \
-noto-fonts-emoji \
-xcolor \
-gimp \
-krita \
-xournalpp \
-qbittorrent \
-calibre \
-lollypop \
-okular \
-scrcpy \
-python-pip \
-ansible \
-flameshot \
 btop \
-pdfarranger \
-filelight \
-ranger \
+calibre \
 clang \
-obsidian
+discord \
+docker docker-compose  \
+exa \
+filelight \
+flameshot \
+gimp \
+gnome-keyring seahorse \
+jdk8-openjdk jdk11-openjdk jdk-openjdk \
+krita \
+libsecret \
+lollypop \
+maven \
+neovim \
+noto-fonts-emoji \
+obs-studio \
+obsidian \
+okular \
+opera opera-ffmpeg-codecs \
+pdfarranger \
+python-pip \
+qbittorrent \
+ranger \
+ripgrep \
+rustup \
+scrcpy \
+thunderbird \
+tmux \
+v4l2loopback-dkms \
+vlc \
+xclip \
+xcolor \
+xfce4-clipman-plugin \
+xournalpp \
+zsh
 
 sudo usermod -aG docker $USER
 sudo usermod -aG video $USER
@@ -125,30 +125,30 @@ sudo systemctl enable --now containerd.service
 rustup default stable
 
 [Yay]
-yay -S google-chrome \
-mugshot \
+yay -S anaconda \
+authy \
+birdtray \
+charles \
+gitkraken \
+google-chrome \
 gruvbox-dark-gtk \
 gruvbox-dark-icons-gtk \
 jetbrains-toolbox \
+megasync-bin thunar-megasync-bin \
+mugshot \
 ncurses5-compat-libs \
-watchman-bin \
-gitkraken \
+obs-backgroundremoval \
+ookla-speedtest-bin \
+postman-bin \
 spotify \
 teams \
-megasync-bin thunar-megasync-bin \
-obs-backgroundremoval \
-visual-studio-code-bin \
-charles \
-birdtray \
-postman-bin \
-authy \
-wps-office \
-wps-office-mime \
-wps-office-all-dicts-win-languages \
-windscribe-cli \
-ookla-speedtest-bin \
 ventoy-bin \
-anaconda
+visual-studio-code-bin \
+watchman-bin \
+windscribe-cli \
+wps-office \
+wps-office-all-dicts-win-languages \
+wps-office-mime
 
 [Xbox Controller]
 yay -S xone-dkms # Dongle
