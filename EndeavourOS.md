@@ -111,6 +111,7 @@ libsecret \
 lollypop \
 maven \
 neovim \
+neovide \
 noto-fonts-emoji \
 obs-studio \
 obsidian \
