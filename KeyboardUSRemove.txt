@@ -1,4 +1,0 @@
-POWERSHELL
-Rename-Item -Path "Registry::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Keyboard Layouts\00000409" -NewName "00000409.bak" -ErrorAction Ignore;
-Rename-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Keyboard Layout\DosKeybCodes" -Name "00000409" -NewName "00000409.bak" -ErrorAction Ignore;
-Rename-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control\Keyboard Layout\DosKeybCodes" -Name "00000409" -NewName "00000409.bak" -ErrorAction Ignore;

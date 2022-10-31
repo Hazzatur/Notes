@@ -1,3 +1,4 @@
+```
 xournalpp dxvk-bin qtwaw ttf-ms-win10 teams arandr piper droidcam matlab anaconda
 protontricks packettracer multimc5 gitkraken citra-qt-git authy arduino-ide dolphin-megasync megasync
 
@@ -142,3 +143,5 @@ git config --global core.askpass /usr/bin/ksshaskpass
 
 # Flutter
 sudo usermod -aG flutterusers alex
+
+```
