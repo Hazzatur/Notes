@@ -313,7 +313,8 @@ sudo ln -s /usr/share/X11/xorg.conf.d/50-tablet.conf /etc/X11/xorg.conf.d/50-tab
 # Reboot
 ```
 
-![[HuionH1060p.png]]
+![HuionH1060p](https://raw.githubusercontent.com/Hazzatur/Notes/main/assets/images/HuionH1060p.png)
+
 
 ##### NVIDIA
 ```
