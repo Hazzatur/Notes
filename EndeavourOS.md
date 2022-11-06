@@ -273,7 +273,7 @@ pcsx2
 yay -S yuzu-mainline-bin \
 rpcs3-bin \
 # Replace with 'cemu' or 'cemu-git' when stable
-cemu-wine \ 
+cemu-wine \
 dolphin-emu-git \
 citra-qt-git
 
