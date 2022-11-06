@@ -93,6 +93,13 @@ sudo sed -i "s,#IgnorePkg   =.*,IgnorePkg   = anaconda,g" /etc/pacman.conf
 conda config --set auto_activate_base False
 ```
 
+#### Setup edid.bin
+```
+if isDesktop then
+  sudo nvidia-xconfig --custom-edid="GPU-0.DP-2:/etc/X11/edid.bin"
+fi
+```
+
 #### Setup repos (personal/work)
 
 #### Setup email, software licenses, themes, steam, accounts
