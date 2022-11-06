@@ -3,7 +3,7 @@
 username="$1"
 isDesktop="true"
 
-if [ "isDesktop" = "true" ]; then
+if [ $isDesktop = "true" ]; then
   # Folders
   declare -a folders=(
     "Calibre Library"
@@ -19,9 +19,9 @@ if [ "isDesktop" = "true" ]; then
   )
   for i in "${folders[@]}"
   do
-    rm -rf /home/$username/$i 
-    ln -sf /home/$username/SSD/$i /home/$username/$i
-    chown -R $username:$username /home/$username/$i
+    rm -rf "/home/$username/$i" 
+    ln -sf "/home/$username/SSD/$i" "/home/$username/$i"
+    chown -R $username:$username "/home/$username/$i"
   done
 
   # Wallpaper
@@ -29,18 +29,18 @@ if [ "isDesktop" = "true" ]; then
 
   # [Mount drives]
   tee -a /etc/fstab > /dev/null <<EOT
-UUID=3165142b-daf2-4957-bdd8-ee12a9a207e8 $HOME/SSD    ext4    defaults,noatime 0 2
-UUID=b879aa82-ad7f-435c-8c04-4375166eb51c $HOME/HDD    ext4    defaults,noatime 0 2
-UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90 $HOME/HDD2    ext4    defaults,noatime 0 2
-UUID=d70138d5-5979-4a67-8b0d-a4db0f621204 $HOME/HDD3    ext4    defaults,noatime 0 2
+UUID=3165142b-daf2-4957-bdd8-ee12a9a207e8 /home/$username/SSD    ext4    defaults,noatime 0 2
+UUID=b879aa82-ad7f-435c-8c04-4375166eb51c /home/$username/HDD    ext4    defaults,noatime 0 2
+UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90 /home/$username/HDD2    ext4    defaults,noatime 0 2
+UUID=d70138d5-5979-4a67-8b0d-a4db0f621204 /home/$username/HDD3    ext4    defaults,noatime 0 2
 EOT
 
   # [Monitor config]
   curl -o /etc/X11/edid.bin --create-dirs https://raw.githubusercontent.com/Hazzatur/Notes/main/edid.bin
   mkdir -p /home/$username/.screenlayout
   chown -R $username:$username /home/$username/.screenlayout
-  sed -i "s,#display-setup-script=.*,display-setup-script=$HOME/.screenlayout/monitor.sh,g" /etc/lightdm/lightdm.conf
-  tee -a $HOME/.screenlayout/monitor.sh > /dev/null <<EOT
+  sed -i "s,#display-setup-script=.*,display-setup-script=/home/$username/.screenlayout/monitor.sh,g" /etc/lightdm/lightdm.conf
+  tee -a /home/$username/.screenlayout/monitor.sh > /dev/null <<EOT
 #!/bin/sh
 xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x310 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x290 --rotate normal
 EOT
@@ -48,7 +48,7 @@ EOT
 
   # [TL-WN823N]
   echo -e "blacklist rtl8xxxu" | tee -a /etc/modprobe.d/blacklist.conf
-elif
+else
   # Folders
   declare -a folders=(
     "MEGA"
@@ -57,8 +57,8 @@ elif
   )
   for i in "${folders[@]}"
   do
-    mkdir -p /home/$username/$i
-    chown -R $username:$username /home/$username/$i
+    mkdir -p "/home/$username/$i"
+    chown -R $username:$username "/home/$username/$i"
   done
 
   # Wallpaper
