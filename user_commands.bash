@@ -1,12 +1,69 @@
 #!/bin/bash
 
 username="$1"
+isDesktop="true"
 
-curl -o /home/$username/EOSNotes https://raw.githubusercontent.com/Hazzatur/Notes/main/EndeavourOSNotes
-chown $username:$username /home/$username/EOSNotes
+if [ "isDesktop" = "true" ]; then
+  # Folders
+  declare -a folders=(
+    "Calibre Library"
+    "Desktop"
+    "Documents"
+    "Downloads"
+    "MEGA"
+    "Music"
+    "Personal"
+    "Pictures"
+    "Videos"
+    "Work"
+  )
+  for i in "${folders[@]}"
+  do
+    rm -rf /home/$username/$i 
+    ln -sf /home/$username/SSD/$i /home/$username/$i
+    chown -R $username:$username /home/$username/$i
+  done
 
-mkdir -p /home/$username/{MEGA,Personal,Work}
-chown -R $username:$username /home/$username/{MEGA,Personal,Work}
+  # Wallpaper
+  wallpaper="https://cdna.artstation.com/p/assets/images/images/035/981/940/4k/james-arkwright-jamesarkwright-disperse-01-jpg.jpg?1616469170"
+
+  # [Mount drives]
+  tee -a /etc/fstab > /dev/null <<EOT
+UUID=3165142b-daf2-4957-bdd8-ee12a9a207e8 $HOME/SSD    ext4    defaults,noatime 0 2
+UUID=b879aa82-ad7f-435c-8c04-4375166eb51c $HOME/HDD    ext4    defaults,noatime 0 2
+UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90 $HOME/HDD2    ext4    defaults,noatime 0 2
+UUID=d70138d5-5979-4a67-8b0d-a4db0f621204 $HOME/HDD3    ext4    defaults,noatime 0 2
+EOT
+
+  # [Monitor config]
+  curl -o /etc/X11/edid.bin --create-dirs https://raw.githubusercontent.com/Hazzatur/Notes/main/edid.bin
+  mkdir -p /home/$username/.screenlayout
+  chown -R $username:$username /home/$username/.screenlayout
+  sed -i "s,#display-setup-script=.*,display-setup-script=$HOME/.screenlayout/monitor.sh,g" /etc/lightdm/lightdm.conf
+  tee -a $HOME/.screenlayout/monitor.sh > /dev/null <<EOT
+#!/bin/sh
+xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x310 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x290 --rotate normal
+EOT
+  nvidia-xconfig --custom-edid="GPU-0.DP-2:/etc/X11/edid.bin"
+
+  # [TL-WN823N]
+  echo -e "blacklist rtl8xxxu" | tee -a /etc/modprobe.d/blacklist.conf
+elif
+  # Folders
+  declare -a folders=(
+    "MEGA"
+    "Personal"
+    "Work"
+  )
+  for i in "${folders[@]}"
+  do
+    mkdir -p /home/$username/$i
+    chown -R $username:$username /home/$username/$i
+  done
+
+  # Wallpaper
+  wallpaper="https://cdna.artstation.com/p/assets/images/images/035/982/154/large/james-arkwright-jamesarkwright-disperse-02-jpg.jpg?1616715433"
+fi
 
 # [GRUB]
 sed -i "s/GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/g" /etc/default/grub
@@ -16,7 +73,7 @@ pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout nvidia
 pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
 
 # [LightDM]
-curl -o /home/$username/Pictures/Wallpapers/custom.png --create-dirs https://cdna.artstation.com/p/assets/images/images/035/982/154/large/james-arkwright-jamesarkwright-disperse-02-jpg.jpg?1616715433
+curl -o /home/$username/Pictures/Wallpapers/custom.png --create-dirs $wallpaper
 chown -R $username:$username /home/$username/Pictures/
 cp /home/$username/Pictures/Wallpapers/custom.png /usr/share/backgrounds/custom.png
 sed -i "s,background=.*,background=/usr/share/backgrounds/custom.png,g" /etc/lightdm/slick-greeter.conf
@@ -42,10 +99,6 @@ sed -i "s/#unix_sock_rw_perms*/unix_sock_rw_perms/g" /etc/libvirt/libvirtd.conf
 usermod -aG libvirt $username
 systemctl enable libvirtd.service
 
-# TODO: Not working add to ansible playbook
-# virsh net-start default
-# virsh net-autostart default
-
 # [Huion]
 tee -a /usr/share/X11/xorg.conf.d/50-tablet.conf > /dev/null <<EOT
 Section "InputClass"
@@ -60,3 +113,8 @@ ln -s /usr/share/X11/xorg.conf.d/50-tablet.conf /etc/X11/xorg.conf.d/50-tablet.c
 # [Anaconda]
 groupadd anaconda
 usermod -aG anaconda $username
+
+# [Fluuter]
+groupadd flutterusers
+usermod -aG flutterusers $username
+
