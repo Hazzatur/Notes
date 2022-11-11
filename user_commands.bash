@@ -117,3 +117,5 @@ usermod -aG anaconda $username
 groupadd flutterusers
 usermod -aG flutterusers $username
 
+# [Java]
+archlinux-java set java-11-openjdk

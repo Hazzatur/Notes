@@ -347,3 +347,8 @@ Categories=Development;
 Keywords=anaconda;
 EOT
 ```
+
+#### Java
+```
+sudo archlinux-java set java-11-openjdk
+```
