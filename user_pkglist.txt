@@ -3,6 +3,7 @@ arandr
 bat
 btop
 calibre
+chromium
 clang
 discord
 docker
@@ -30,6 +31,7 @@ opera
 opera-ffmpeg-codecs
 pcsx2
 pdfarranger
+perl-anyevent-i3
 ppsspp
 python-pip
 qbittorrent
@@ -40,6 +42,7 @@ rustup
 scrcpy
 seahorse
 steam
+stow
 thunderbird
 tmux
 v4l2loopback-dkms

@@ -97,6 +97,7 @@ arandr \
 bat \
 btop \
 calibre \
+chromium \
 clang \
 discord \
 docker docker-compose  \
@@ -118,12 +119,14 @@ obsidian \
 okular \
 opera opera-ffmpeg-codecs \
 pdfarranger \
+perl-anyevent-i3 \
 python-pip \
 qbittorrent \
 ranger \
 ripgrep \
 rustup \
 scrcpy \
+stow \
 thunderbird \
 tmux \
 v4l2loopback-dkms \
@@ -351,4 +354,20 @@ EOT
 #### Java
 ```
 sudo archlinux-java set java-11-openjdk
+```
+
+#### Stow
+```
+# WIP for each folder stow to $HOME
+stow --target=$HOME applications bin git i3 lvim nano tmux zsh
+cd work
+# Stow work folder
+```
+
+#### Vulkan AMD error
+```
+pacman -Qs vulkan
+# Remove AMD packages
+# e.g. 
+# sudo pacman -R amdvlk lib32-amdvlk
 ```
