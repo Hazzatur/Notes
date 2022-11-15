@@ -19,7 +19,7 @@ mkdir -p "$HOME/.config/autostart/"
 sudo sed -i "s,#display-setup-script=.*,display-setup-script=$HOME/.screenlayout/screens.sh,g" /etc/lightdm/lightdm.conf
 tee -a $HOME/.screenlayout/screens.sh > /dev/null <<EOT
 #!/bin/sh
-xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x310 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x290 --rotate normal
+xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x310 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x290 --rotate normal --rate 60
 EOT
 tee -a $HOME/.config/autostart/screens.sh.desktop > /dev/null <<EOT
 [Desktop Entry]
@@ -160,6 +160,7 @@ jetbrains-toolbox \
 megasync-bin thunar-megasync-bin \
 mugshot \
 ncurses5-compat-libs \
+nvidia-container-toolkit \
 obs-backgroundremoval \
 ookla-speedtest-bin \
 postman-bin \
@@ -297,6 +298,7 @@ chmod -R 555 Origin
 # Alice: Madness Returns gamemoderun %command% -nostartupmovies
 # Control: gamemoderun %command% -dx12
 # Cyberpunk 2077: gamemoderun %command% --launcher-skip
+# The Dark Side Detective: -screen-fullscreen 0 -screen-width 1920 -screen-height 1080
 # Days Gone: DXVK_ASYNC=1 gamemoderun %command%
 ```
 
