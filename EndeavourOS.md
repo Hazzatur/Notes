@@ -15,25 +15,10 @@ sudo update-grub
 ##### Screen config lightdm
 ```
 mkdir "$HOME/.screenlayout/"
-mkdir -p "$HOME/.config/autostart/"
 sudo sed -i "s,#display-setup-script=.*,display-setup-script=$HOME/.screenlayout/screens.sh,g" /etc/lightdm/lightdm.conf
-tee -a $HOME/.screenlayout/screens.sh > /dev/null <<EOT
+tee -a $HOME/.screenlayout/monitor.sh > /dev/null <<EOT
 #!/bin/sh
 xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 --pos 0x310 --rotate normal --output DP-2 --mode 1920x1080 --pos 3840x0 --rotate left --output DP-3 --off --output HDMI-1 --off --output DP-4 --off --output DP-5 --primary --mode 1920x1080 --pos 1920x290 --rotate normal --rate 60
-EOT
-tee -a $HOME/.config/autostart/screens.sh.desktop > /dev/null <<EOT
-[Desktop Entry]
-Encoding=UTF-8
-Version=0.9.4
-Type=Application
-Name=Screens.sh
-Comment=Fix screen pos
-Exec=/home/hazzatur/.screenlayout/screens.sh
-OnlyShowIn=XFCE;
-RunHook=0
-StartupNotify=false
-Terminal=false
-Hidden=false
 EOT
 ```
 
@@ -56,7 +41,7 @@ UUID=d70138d5-5979-4a67-8b0d-a4db0f621204 $HOME/HDD3    ext4    defaults,noatime
 EOT
 ```
 
-##### Add symlinks
+##### Add symlinks & create folders
 ```
 sed -i "s/XDG_DESKTOP_DIR=.*/XDG_DESKTOP_DIR=/g" $HOME/.config/user-dirs.dirs
 rm -rf $HOME/{Desktop,Documents,Downloads,Music,Pictures,Videos}
@@ -71,6 +56,7 @@ ln -sf "$HOME/SSD/Pictures" "$HOME/Pictures"
 ln -sf "$HOME/SSD/Videos" "$HOME/Videos"
 ln -sf "$HOME/SSD/Work" "$HOME/Work"
 sed -i 's,XDG_DESKTOP_DIR=,XDG_DESKTOP_DIR="$HOME/Desktop",g' $HOME/.config/user-dirs.dirs
+mkdir -p $HOME/scripts
 ```
 
 ##### Steam & ProtonGE
@@ -97,6 +83,7 @@ arandr \
 bat \
 btop \
 calibre \
+catfish \
 chromium \
 clang \
 discord \
@@ -360,9 +347,12 @@ sudo archlinux-java set java-11-openjdk
 
 #### Stow
 ```
-# WIP for each folder stow to $HOME
-stow --target=$HOME applications bin git i3 lvim nano tmux zsh
-cd work
+for directory in */ ; do
+    if [ "$directory" != "personal/" ] && [ "$directory" != "work/" ]; then
+      stow --target=$HOME $directory --restow
+    fi
+done
+# Stow personal folder
 # Stow work folder
 ```
 

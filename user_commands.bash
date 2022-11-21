@@ -24,6 +24,9 @@ if [ $isDesktop = "true" ]; then
     chown -R $username:$username "/home/$username/$i"
   done
 
+  mkdir -p "/home/$username/.scripts"
+  chown -R $username:$username "/home/$username/.scripts"
+
   # Wallpaper
   wallpaper="https://cdna.artstation.com/p/assets/images/images/035/981/940/4k/james-arkwright-jamesarkwright-disperse-01-jpg.jpg?1616469170"
 
@@ -56,6 +59,7 @@ else
     "MEGA"
     "Personal"
     "Work"
+    ".scripts"
   )
   for i in "${folders[@]}"
   do

@@ -3,6 +3,7 @@ arandr
 bat
 btop
 calibre
+catfish
 chromium
 clang
 discord
