@@ -24,9 +24,6 @@ if [ $isDesktop = "true" ]; then
     chown -R $username:$username "/home/$username/$i"
   done
 
-  mkdir -p "/home/$username/.scripts"
-  chown -R $username:$username "/home/$username/.scripts"
-
   # Wallpaper
   wallpaper="https://cdna.artstation.com/p/assets/images/images/035/981/940/4k/james-arkwright-jamesarkwright-disperse-01-jpg.jpg?1616469170"
 
@@ -47,7 +44,7 @@ xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 1920x1080 
 EOT
   chmod +x /home/$username/.screenlayout/monitor.sh
   chown -R $username:$username /home/$username/.screenlayout
-  # edid.bin needs to be loaded in order to load screenlayout
+  # edid.bin needs to be loaded first in order to load screenlayout
   sed -i "s,#display-setup-script=.*,#display-setup-script=/home/$username/.screenlayout/monitor.sh,g" /etc/lightdm/lightdm.conf
 
   # [TL-WN823N]
@@ -59,7 +56,6 @@ else
     "MEGA"
     "Personal"
     "Work"
-    ".scripts"
   )
   for i in "${folders[@]}"
   do
