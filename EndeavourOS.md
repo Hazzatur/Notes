@@ -56,7 +56,6 @@ ln -sf "$HOME/SSD/Pictures" "$HOME/Pictures"
 ln -sf "$HOME/SSD/Videos" "$HOME/Videos"
 ln -sf "$HOME/SSD/Work" "$HOME/Work"
 sed -i 's,XDG_DESKTOP_DIR=,XDG_DESKTOP_DIR="$HOME/Desktop",g' $HOME/.config/user-dirs.dirs
-mkdir -p $HOME/scripts
 ```
 
 ##### Steam & ProtonGE
