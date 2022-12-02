@@ -120,3 +120,9 @@ usermod -aG flutterusers $username
 
 # [Java]
 archlinux-java set java-11-openjdk
+
+# [Windscribe]
+
+rm /etc/resolv.conf
+ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
+systemctl enable systemd-resolved.service

@@ -189,6 +189,7 @@ git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zs
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
+curl -o ~/.oh-my-zsh/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
 ```
 
 ##### TP-Link TL-WN823N
@@ -360,4 +361,11 @@ pacman -Qs vulkan
 # Remove AMD packages
 # e.g. 
 # sudo pacman -R amdvlk lib32-amdvlk
+```
+
+#### Windscribe
+```
+sudo rm /etc/resolv.conf
+sudo ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
+sudo systemctl enable --now systemd-resolved.service
 ```
