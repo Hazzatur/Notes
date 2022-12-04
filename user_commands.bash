@@ -34,6 +34,7 @@ UUID=b879aa82-ad7f-435c-8c04-4375166eb51c /home/$username/HDD    ext4    default
 UUID=aa10988f-1ed4-4130-b5d9-6af1174b1e90 /home/$username/HDD2    ext4    defaults,noatime 0 2
 UUID=d70138d5-5979-4a67-8b0d-a4db0f621204 /home/$username/HDD3    ext4    defaults,noatime 0 2
 EOT
+  mount -a
 
   # [Monitor config]
   curl -o /etc/X11/edid.bin --create-dirs https://raw.githubusercontent.com/Hazzatur/Notes/main/edid.bin
@@ -122,7 +123,32 @@ usermod -aG flutterusers $username
 archlinux-java set java-11-openjdk
 
 # [Windscribe]
-
 rm /etc/resolv.conf
 ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
 systemctl enable systemd-resolved.service
+
+# [ZSH]
+chsh -s /usr/bin/zsh $username
+cmd=$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended)
+runuser -u $username "$cmd"
+git clone https://github.com/romkatv/powerlevel10k.git /home/$username/.oh-my-zsh/custom/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$username/.oh-my-zsh/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh/plugins/zsh-autosuggestions
+git clone https://github.com/esc/conda-zsh-completion /home/$username/.oh-my-zsh/plugins/conda-zsh-completion
+curl -o /home/$username/.oh-my-zsh/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
+chown -R $username:$username /home/$username/.oh-my-zsh
+
+# [Ansible]
+[ -d /home/$username/Personal/ansible ] || git clone https://github.com/Hazzatur/ansible.git /home/$username/Personal/ansible
+(cd /home/$username/Personal/ansible; git pull https://github.com/Hazzatur/ansible.git)
+chown -R $username:$username /home/$username/Personal/ansible
+
+# [Yay]
+curl -o /home/$username/yay.sh https://raw.githubusercontent.com/Hazzatur/Notes/main/yay.sh
+if [ $isDesktop = "false" ]; then
+  sed -i "s/isDesktop='true'/isDesktop='false'/g" /home/$username/yay.sh
+fi
+chown $username:$username /home/$username/yay.sh
+chmod +x /home/$username/yay.sh
+runuser -u $username /home/$username/yay.sh
+rm /home/$username/yay.sh

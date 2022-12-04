@@ -78,20 +78,25 @@ yay -S proton-ge-custom-bin protontricks
 ##### Pacman
 ```
 sudo pacman -S ansible \
+alacritty \
 arandr \
 bat \
+broot \
 btop \
 calibre \
 catfish \
 chromium \
 clang \
+copyq \
 discord \
 docker docker-compose  \
 exa \
+fd \
 filelight \
 flameshot \
 gimp \
 gnome-keyring seahorse \
+gsimplecal \
 jdk8-openjdk jdk11-openjdk jdk-openjdk \
 krita \
 libsecret \
@@ -118,7 +123,6 @@ v4l2loopback-dkms \
 vlc \
 xclip \
 xcolor \
-xfce4-clipman-plugin \
 xournalpp \
 zsh
 ```
@@ -194,11 +198,7 @@ curl -o ~/.oh-my-zsh/completions/_windscribe --create-dirs https://raw.githubuse
 
 ##### TP-Link TL-WN823N
 ```
-yay -S rtl8192eu
-sudo echo -e "blacklist rtl8xxxu" | sudo tee -a /etc/modprobe.d/blacklist.conf
-sudo depmod -a
-sudo mkinitcpio -P
-# Reboot
+yay -S rtl8192eu-dkms
 ```
 
 ##### SSH
