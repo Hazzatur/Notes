@@ -78,7 +78,6 @@ yay -S proton-ge-custom-bin protontricks
 ##### Pacman
 ```
 sudo pacman -S ansible \
-alacritty \
 arandr \
 bat \
 broot \
@@ -99,6 +98,9 @@ gnome-keyring seahorse \
 gsimplecal \
 jdk8-openjdk jdk11-openjdk jdk-openjdk \
 krita \
+kitty \
+kitty-shell-integration \
+kitty-terminfo \
 libsecret \
 lollypop \
 maven \
@@ -146,6 +148,7 @@ google-chrome \
 gruvbox-dark-gtk \
 gruvbox-dark-icons-gtk \
 jetbrains-toolbox \
+kitty-gruvbox-theme-git \
 megasync-bin thunar-megasync-bin \
 mugshot \
 ncurses5-compat-libs \
@@ -154,7 +157,7 @@ obs-backgroundremoval \
 ookla-speedtest-bin \
 postman-bin \
 spotify \
-teams \
+thunar-shares-plugin \
 ventoy-bin \
 visual-studio-code-bin \
 watchman-bin \

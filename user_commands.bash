@@ -141,14 +141,5 @@ chown -R $username:$username /home/$username/.oh-my-zsh
 # [Ansible]
 [ -d /home/$username/Personal/ansible ] || git clone https://github.com/Hazzatur/ansible.git /home/$username/Personal/ansible
 (cd /home/$username/Personal/ansible; git pull https://github.com/Hazzatur/ansible.git)
+git remote set-url origin git@github.com:Hazzatur/ansible.git
 chown -R $username:$username /home/$username/Personal/ansible
-
-# [Yay]
-curl -o /home/$username/yay.sh https://raw.githubusercontent.com/Hazzatur/Notes/main/yay.sh
-if [ $isDesktop = "false" ]; then
-  sed -i "s/isDesktop='true'/isDesktop='false'/g" /home/$username/yay.sh
-fi
-chown $username:$username /home/$username/yay.sh
-chmod +x /home/$username/yay.sh
-runuser -u $username /home/$username/yay.sh
-rm /home/$username/yay.sh

@@ -1,4 +1,3 @@
-alacritty
 ansible
 arandr
 bat
@@ -24,6 +23,9 @@ jdk-openjdk
 jdk11-openjdk
 jdk8-openjdk
 krita
+kitty
+kitty-shell-integration
+kitty-terminfo
 libsecret
 lollypop
 lutris

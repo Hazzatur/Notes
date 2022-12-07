@@ -17,6 +17,7 @@ google-chrome \
 gruvbox-dark-gtk \
 gruvbox-dark-icons-gtk \
 jetbrains-toolbox \
+kitty-gruvbox-theme-git \
 lib32-gamemode \
 megasync-bin \
 mugshot \
@@ -32,10 +33,8 @@ ptxconf-git \
 rpcs3-bin \
 rtl8192eu-dkms \
 spotify \
-teams \
 thunar-megasync-bin \
 thunar-shares-plugin \
-thunar-vcs-plugin \
 ttf-meslo-nerd-font-powerlevel10k \
 ventoy-bin \
 visual-studio-code-bin \
