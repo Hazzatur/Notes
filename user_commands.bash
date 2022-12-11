@@ -136,6 +136,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$userna
 git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh/plugins/zsh-autosuggestions
 git clone https://github.com/esc/conda-zsh-completion /home/$username/.oh-my-zsh/plugins/conda-zsh-completion
 curl -o /home/$username/.oh-my-zsh/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
+curl -o /home/$username/.oh-my-zsh/completions/_cht --create-dirs https://cheat.sh/:zsh
+curl -o /home/$username/.config/kitty/dracula.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
+curl -o /home/$username/.config/kitty/diff.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
 chown -R $username:$username /home/$username/.oh-my-zsh
 
 # [Ansible]

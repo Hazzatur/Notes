@@ -143,12 +143,11 @@ yay -S anaconda \
 authy \
 birdtray \
 charles \
+cht.sh-git \
 gitkraken \
 google-chrome \
-gruvbox-dark-gtk \
-gruvbox-dark-icons-gtk \
+i3lock-color \
 jetbrains-toolbox \
-kitty-gruvbox-theme-git \
 megasync-bin thunar-megasync-bin \
 mugshot \
 ncurses5-compat-libs \
@@ -197,6 +196,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
 curl -o ~/.oh-my-zsh/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
+curl -o ~/.oh-my-zsh/completions/_cht --create-dirs https://cheat.sh/:zsh
+curl -o ~/.config/kitty/dracula.conf https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
+curl -o ~/.config/kitty/diff.conf https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
 ```
 
 ##### TP-Link TL-WN823N
@@ -371,4 +373,20 @@ pacman -Qs vulkan
 sudo rm /etc/resolv.conf
 sudo ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
 sudo systemctl enable --now systemd-resolved.service
+```
+
+#### GTK
+```
+# Theme
+curl -o ~/.themes/dracula.zip --create-dirs https://github.com/dracula/gtk/archive/master.zip -J -L
+cd ~/.themes
+unzip -q dracula.zip
+mv gtk-master Dracula
+rm dracula.zip
+# Icons
+curl -o ~/.icons/dracula.zip --create-dirs https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip -L
+cd ~/.icons
+unzip -q dracula.zip
+mv dracula-icons-main Dracula
+rm dracula.zip
 ```
