@@ -141,6 +141,22 @@ curl -o /home/$username/.config/kitty/dracula.conf --create-dirs https://raw.git
 curl -o /home/$username/.config/kitty/diff.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
 chown -R $username:$username /home/$username/.oh-my-zsh
 
+# [GTK]
+# Theme
+curl -o /home/$username/.themes/dracula.zip --create-dirs https://github.com/dracula/gtk/archive/master.zip -L
+unzip -q /home/$username/.themes/dracula.zip
+mv /home/$username/.themes/gtk-master /home/$username/.themes/Dracula
+rm /home/$username/.themes/dracula.zip
+sudo cp -r /home/$username/.themes/Dracula /usr/share/themes/Dracula
+chown -R $username:$username /home/$username/.themes
+# Icons
+curl -o /home/$username/.icons/dracula.zip --create-dirs https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip -L
+unzip -q /home/$username/.icons/dracula.zip
+mv /home/$username/.icons/dracula-icons-main /home/$username/.icons/Dracula
+rm /home/$username/.icons/dracula.zip
+sudo cp -r /home/$username/.icons/Dracula /usr/share/icons/Dracula
+chown -R $username:$username /home/$username/.icons
+
 # [Ansible]
 [ -d /home/$username/Personal/ansible ] || git clone https://github.com/Hazzatur/ansible.git /home/$username/Personal/ansible
 (cd /home/$username/Personal/ansible; git pull https://github.com/Hazzatur/ansible.git)

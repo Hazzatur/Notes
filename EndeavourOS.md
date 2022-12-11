@@ -378,15 +378,17 @@ sudo systemctl enable --now systemd-resolved.service
 #### GTK
 ```
 # Theme
-curl -o ~/.themes/dracula.zip --create-dirs https://github.com/dracula/gtk/archive/master.zip -J -L
+curl -o ~/.themes/dracula.zip --create-dirs https://github.com/dracula/gtk/archive/master.zip -L
 cd ~/.themes
 unzip -q dracula.zip
 mv gtk-master Dracula
 rm dracula.zip
+sudo cp -r ~/.themes/Dracula /usr/share/themes/Dracula
 # Icons
 curl -o ~/.icons/dracula.zip --create-dirs https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip -L
 cd ~/.icons
 unzip -q dracula.zip
 mv dracula-icons-main Dracula
 rm dracula.zip
+sudo cp -r ~/.icons/Dracula /usr/share/icons/Dracula
 ```
