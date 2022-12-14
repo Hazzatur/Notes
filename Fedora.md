@@ -1,6 +1,6 @@
 # Workstation
 
-```
+```bash
 # Remove default packages
 sudo dnf remove kmail libreoffice-core-VERSION
 
@@ -260,7 +260,7 @@ EOT
 
 # KDE
 
-```
+```bash
 # RPM Fusion
 sudo dnf install \
 https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm

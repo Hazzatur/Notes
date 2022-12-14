@@ -1,4 +1,4 @@
-```
+```bash
 xournalpp dxvk-bin qtwaw ttf-ms-win10 teams arandr piper droidcam matlab anaconda
 protontricks packettracer multimc5 gitkraken citra-qt-git authy arduino-ide dolphin-megasync megasync
 

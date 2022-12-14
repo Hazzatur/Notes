@@ -1,6 +1,6 @@
 # Useful aliases
 
-```
+```bash
 // Git all
 git config --global alias.all '!f() { ls -R -d */.git | xargs -I{} bash -c "echo {} && git -C {}/../ $1"; }; f'
 

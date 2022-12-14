@@ -1,6 +1,6 @@
 #### Steam game not starting
 
-```
+```batch
 To start, open your Crysis Launch Properties. 
 
 If you have an AMD processor with 8 cores, set the following launch command:
@@ -18,13 +18,13 @@ Done!
 
 ### Fix Shorcut Virus
 
-```
+```batch
 attrib -s -r -h /s /d 
 ```
 
 ###  HyperV change ports
 
-```
+```batch
 dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
 
 netsh int ipv4 add excludedportrange protocol=tcp startport=50070 numberofports=1
@@ -34,14 +34,14 @@ dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
 
 ### Jetbrains not starting (Needs admin)
 
-```
+```batch
 net stop winnat
 net start winnat
 ```
 
 ### Remove US Keyboard
 
-```
+```powershell
 Rename-Item -Path "Registry::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Keyboard Layouts\00000409" -NewName "00000409.bak" -ErrorAction Ignore;
 Rename-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Keyboard Layout\DosKeybCodes" -Name "00000409" -NewName "00000409.bak" -ErrorAction Ignore;
 Rename-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Control\Keyboard Layout\DosKeybCodes" -Name "00000409" -NewName "00000409.bak" -ErrorAction Ignore;
@@ -49,7 +49,7 @@ Rename-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Con
 
 ### Remove Steam Games from control panel
 
-```
+```batch
 @echo off
 
 setlocal enabledelayedexpansion
@@ -77,7 +77,7 @@ pause
 
 #### Clear browsers PS
 
-```
+```powershell
 Write-Host -ForegroundColor yellow "#######################################################"
 ""
 Write-Host -ForegroundColor Green "Powershell commands to delete cache & cookies in Firefox, Chrome & IE browsers"
