@@ -2,7 +2,6 @@ ansible
 arandr
 bat
 blueberry
-broot
 btop
 calibre
 catfish

@@ -80,7 +80,6 @@ yay -S proton-ge-custom-bin protontricks
 sudo pacman -S ansible \
 arandr \
 bat \
-broot \
 btop \
 calibre \
 catfish \
