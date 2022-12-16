@@ -134,6 +134,7 @@ git clone https://github.com/romkatv/powerlevel10k.git /home/$username/.oh-my-zs
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$username/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh-custom/plugins/zsh-autosuggestions
 git clone https://github.com/esc/conda-zsh-completion /home/$username/.oh-my-zsh-custom/plugins/conda-zsh-completion
+git clone https://github.com/Aloxaf/fzf-tab /home/$username/.oh-my-zsh-custom/plugins/fzf-tab
 curl -o /home/$username/.oh-my-zsh-custom/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
 curl -o /home/$username/.oh-my-zsh-custom/completions/_cht --create-dirs https://cheat.sh/:zsh
 curl -o /home/$username/.config/kitty/dracula.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
