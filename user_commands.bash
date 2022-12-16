@@ -77,6 +77,7 @@ pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout giflib
 
 # [LightDM]
 curl -o /usr/share/backgrounds/custom.png --create-dirs $wallpaper
+chown -R root:root /usr/share/backgrounds
 sed -i "s,background=.*,background=/usr/share/backgrounds/custom.png,g" /etc/lightdm/slick-greeter.conf
 sed -i "s,show-power=.*,show-power=true,g" /etc/lightdm/slick-greeter.conf
 sed -i "s,background-color=.*,background-color=#000000,g" /etc/lightdm/slick-greeter.conf
@@ -129,14 +130,12 @@ systemctl enable systemd-resolved.service
 
 # [ZSH]
 chsh -s /usr/bin/zsh $username
-cmd=$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended)
-runuser -u $username "$cmd"
-git clone https://github.com/romkatv/powerlevel10k.git /home/$username/.oh-my-zsh/custom/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$username/.oh-my-zsh/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh/plugins/zsh-autosuggestions
-git clone https://github.com/esc/conda-zsh-completion /home/$username/.oh-my-zsh/plugins/conda-zsh-completion
-curl -o /home/$username/.oh-my-zsh/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
-curl -o /home/$username/.oh-my-zsh/completions/_cht --create-dirs https://cheat.sh/:zsh
+git clone https://github.com/romkatv/powerlevel10k.git /home/$username/.oh-my-zsh-custom/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$username/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh-custom/plugins/zsh-autosuggestions
+git clone https://github.com/esc/conda-zsh-completion /home/$username/.oh-my-zsh-custom/plugins/conda-zsh-completion
+curl -o /home/$username/.oh-my-zsh-custom/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
+curl -o /home/$username/.oh-my-zsh-custom/completions/_cht --create-dirs https://cheat.sh/:zsh
 curl -o /home/$username/.config/kitty/dracula.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
 curl -o /home/$username/.config/kitty/diff.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
 chown -R $username:$username /home/$username/.oh-my-zsh

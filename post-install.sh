@@ -49,3 +49,21 @@ if [ $isDesktop = "true" ]; then
 else
   yay -S xpadneo-dkms-git
 fi
+
+# Oh My Zsh
+curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# rustup
+rustup default stable
+
+# volta
+curl https://get.volta.sh | bash
+volta install 16@latest
+
+# lvim
+LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
