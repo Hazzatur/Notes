@@ -5,6 +5,7 @@ blueberry
 btop
 calibre
 catfish
+chafa
 chromium
 clang
 copyq
@@ -16,6 +17,7 @@ fd
 filelight
 flameshot
 gimp
+git-delta
 gnome-keyring
 gsimplecal
 jdk-openjdk
@@ -39,6 +41,7 @@ opera-ffmpeg-codecs
 pcsx2
 pdfarranger
 perl-anyevent-i3
+perl-image-exiftool
 ppsspp
 python-pip
 qbittorrent

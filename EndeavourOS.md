@@ -83,6 +83,7 @@ bat \
 btop \
 calibre \
 catfish \
+chafa \
 chromium \
 clang \
 copyq \
@@ -93,6 +94,7 @@ fd \
 filelight \
 flameshot \
 gimp \
+git-delta \
 gnome-keyring seahorse \
 gsimplecal \
 jdk8-openjdk jdk11-openjdk jdk-openjdk \
@@ -111,6 +113,7 @@ okular \
 opera opera-ffmpeg-codecs \
 pdfarranger \
 perl-anyevent-i3 \
+perl-image-exiftool \
 python-pip \
 qbittorrent \
 ranger \
