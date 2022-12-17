@@ -9,6 +9,7 @@ chafa
 chromium
 clang
 copyq
+csvkit
 discord
 docker
 docker-compose 
@@ -27,6 +28,7 @@ krita
 kitty
 kitty-shell-integration
 kitty-terminfo
+lesspipe
 libsecret
 lollypop
 lutris
@@ -63,4 +65,5 @@ winetricks
 xclip
 xcolor
 xournalpp
+xsv
 zsh

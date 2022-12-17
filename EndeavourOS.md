@@ -87,6 +87,7 @@ chafa \
 chromium \
 clang \
 copyq \
+csvkit \
 discord \
 docker docker-compose  \
 exa \
@@ -102,6 +103,7 @@ krita \
 kitty \
 kitty-shell-integration \
 kitty-terminfo \
+lesspipe \
 libsecret \
 lollypop \
 maven \
@@ -126,6 +128,7 @@ tmux \
 v4l2loopback-dkms \
 vlc \
 xclip \
+xsv \
 xcolor \
 xournalpp \
 zsh
@@ -200,8 +203,8 @@ git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:-~/.oh-my-zsh
 git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh-custom}/plugins/fzf-tab
 curl -o ~/.oh-my-zsh-custom/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
 curl -o ~/.oh-my-zsh-custom/completions/_cht --create-dirs https://cheat.sh/:zsh
-curl -o ~/.config/kitty/dracula.conf https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
-curl -o ~/.config/kitty/diff.conf https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
+curl -o ~/.config/kitty/dracula.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
+curl -o ~/.config/kitty/diff.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
 ```
 
 ##### TP-Link TL-WN823N
@@ -394,4 +397,9 @@ unzip -q dracula.zip
 mv dracula-icons-main Dracula
 rm dracula.zip
 sudo cp -r ~/.icons/Dracula /usr/share/icons/Dracula
+```
+
+#### Bat
+```
+bat cache --build
 ```
