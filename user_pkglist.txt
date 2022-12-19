@@ -1,7 +1,6 @@
 ansible
-arandr
 bat
-blueberry
+blueman
 btop
 calibre
 catfish
@@ -40,6 +39,7 @@ obsidian
 okular
 opera
 opera-ffmpeg-codecs
+picom
 pcsx2
 pdfarranger
 perl-anyevent-i3
