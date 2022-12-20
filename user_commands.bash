@@ -163,3 +163,9 @@ chown -R $username:$username /home/$username/.icons
 (cd /home/$username/Personal/ansible; git pull https://github.com/Hazzatur/ansible.git)
 git remote set-url origin git@github.com:Hazzatur/ansible.git
 chown -R $username:$username /home/$username/Personal/ansible
+
+# [After install]
+curl /home/$username/post-install.sh -o /home/$username/post-install.sh https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh
+sed -i "s/isDesktop=.*/isDesktop=\"$isDesktop\"/g" /home/$username/post-install.sh
+chmod +x /home/$username/post-install.sh
+chown $username:$username /home/$username/post-install.sh
