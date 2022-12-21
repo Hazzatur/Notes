@@ -2,8 +2,7 @@
 
 isDesktop="true"
 
-yay -S --noconfirm --needed \
-anaconda \
+yay -S anaconda \
 authy \
 birdtray \
 cemu-wine \
@@ -12,19 +11,17 @@ cht.sh-git \
 citra-qt-git \
 dolphin-emu-git \
 flutter \
-gamemode \
 gitkraken \
 google-chrome \
 i3lock-color \
 jetbrains-toolbox \
-lib32-gamemode \
 megasync-bin \
 mugshot \
 ncurses5-compat-libs \
 nvidia-container-toolkit \
 obs-backgroundremoval \
 ookla-speedtest-bin \
-polymcu \
+polymc \
 postman-bin \
 proton-ge-custom-bin \
 protontricks \
@@ -51,14 +48,16 @@ else
 fi
 
 # Oh My Zsh
-curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # rustup
 rustup default stable
 
 # volta
-curl https://get.volta.sh | bash
-volta install 16@latest
+curl https://get.volta.sh | bash -s -- --skip-setup
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+volta install node@16
 
 # lvim
 LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)

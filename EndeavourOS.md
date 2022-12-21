@@ -180,7 +180,7 @@ yay -S xpadneo-dkms-git # Bluetooth
 
 ##### Extra
 ```bash
-curl https://get.volta.sh | bash
+curl https://get.volta.sh | bash -s -- --skip-setup
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
@@ -267,7 +267,7 @@ yay -S ttf-ms-win10
 
 ##### Games
 ```bash
-yay -S gamemode lib32-gamemode
+sudo pacman -S gamemode lib32-gamemode
 
 sudo pacman -S retroarch \
 ppsspp \
