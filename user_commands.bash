@@ -76,8 +76,9 @@ pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout nvidia
 pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
 
 # [LightDM]
-curl -o /usr/share/backgrounds/custom.png --create-dirs $wallpaper
-chown -R root:root /usr/share/backgrounds
+mkdir -p /usr/share/backgrounds
+curl $wallpaper > /usr/share/backgrounds/custom.png
+chmod 755 /usr/share/backgrounds/custom.png
 sed -i "s,background=.*,background=/usr/share/backgrounds/custom.png,g" /etc/lightdm/slick-greeter.conf
 sed -i "s,show-power=.*,show-power=true,g" /etc/lightdm/slick-greeter.conf
 sed -i "s,background-color=.*,background-color=#000000,g" /etc/lightdm/slick-greeter.conf
@@ -91,7 +92,9 @@ systemctl enable containerd.service
 usermod -aG video $username
 
 # [Bluetooth]
-systemctl enable bluetooth.service
+# For some reason, bluetooth is not enabled using systemctl
+ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/dbus-org.bluez.service
+mkdir -p /etc/systemd/system/bluetooth.target.wants; ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.target.wants/bluetooth.service
 
 # [QEMU]
 yes | pacman -S --noprogressbar --needed --disable-download-timeout qemu-full virt-manager virt-viewer vde2 bridge-utils openbsd-netcat libguestfs iptables-nft dnsmasq nftables
@@ -130,17 +133,20 @@ systemctl enable systemd-resolved.service
 
 # [ZSH]
 chsh -s /usr/bin/zsh $username
+mkdir -p /home/$username/.oh-my-zsh-custom/{themes,plugins,completions}
+mkdir -p /home/$username/.config/kitty
 git clone https://github.com/romkatv/powerlevel10k.git /home/$username/.oh-my-zsh-custom/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$username/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh-custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions /home/$username/.oh-my-zsh-custom/plugins/zsh-completions
 git clone https://github.com/esc/conda-zsh-completion /home/$username/.oh-my-zsh-custom/plugins/conda-zsh-completion
 git clone https://github.com/Aloxaf/fzf-tab /home/$username/.oh-my-zsh-custom/plugins/fzf-tab
-curl -o /home/$username/.oh-my-zsh-custom/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
-curl -o /home/$username/.oh-my-zsh-custom/completions/_cht --create-dirs https://cheat.sh/:zsh
-curl -o /home/$username/.config/kitty/dracula.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
-curl -o /home/$username/.config/kitty/diff.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
-chown -R $username:$username /home/$username/.oh-my-zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh-custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions /home/$username/.oh-my-zsh-custom/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$username/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting
+curl https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe > /home/$username/.oh-my-zsh-custom/completions/_windscribe
+curl https://cheat.sh/:zsh > /home/$username/.oh-my-zsh-custom/completions/_cheat
+curl https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf > /home/$username/.config/kitty/dracula.conf
+curl https://raw.githubusercontent.com/dracula/kitty/master/diff.conf > /home/$username/.config/kitty/diff.conf
+chown -R $username:$username /home/$username/.oh-my-zsh-custom
+chown -R $username:$username /home/$username/.config/kitty
 
 # [GTK]
 # Theme
@@ -148,24 +154,28 @@ curl -o /home/$username/.themes/dracula.zip --create-dirs https://github.com/dra
 unzip -q /home/$username/.themes/dracula.zip
 mv /home/$username/.themes/gtk-master /home/$username/.themes/Dracula
 rm /home/$username/.themes/dracula.zip
-sudo cp -r /home/$username/.themes/Dracula /usr/share/themes/Dracula
+cp -r /home/$username/.themes/Dracula /usr/share/themes/Dracula
 chown -R $username:$username /home/$username/.themes
 # Icons
 curl -o /home/$username/.icons/dracula.zip --create-dirs https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip -L
 unzip -q /home/$username/.icons/dracula.zip
 mv /home/$username/.icons/dracula-icons-main /home/$username/.icons/Dracula
 rm /home/$username/.icons/dracula.zip
-sudo cp -r /home/$username/.icons/Dracula /usr/share/icons/Dracula
+cp -r /home/$username/.icons/Dracula /usr/share/icons/Dracula
 chown -R $username:$username /home/$username/.icons
 
 # [Ansible]
 [ -d /home/$username/Personal/ansible ] || git clone https://github.com/Hazzatur/ansible.git /home/$username/Personal/ansible
-(cd /home/$username/Personal/ansible; git pull https://github.com/Hazzatur/ansible.git)
-git remote set-url origin git@github.com:Hazzatur/ansible.git
+git --git-dir /home/$username/Personal/ansible/.git remote set-url origin git@github.com:Hazzatur/ansible.git
 chown -R $username:$username /home/$username/Personal/ansible
 
 # [After install]
-curl /home/$username/post-install.sh -o /home/$username/post-install.sh https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh
+curl /home/$username/post-install.sh https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh > /home/$username/post-install.sh
 sed -i "s/isDesktop=.*/isDesktop=\"$isDesktop\"/g" /home/$username/post-install.sh
 chmod +x /home/$username/post-install.sh
 chown $username:$username /home/$username/post-install.sh
+
+# [Cleanup]
+# steam install this as dependency but it breaks nvidia
+pacman -R amdvlk lib32-amdvlk
+
