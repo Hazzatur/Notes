@@ -19,7 +19,7 @@ if [ $isDesktop = "true" ]; then
   )
   for i in "${folders[@]}"
   do
-    rm -rf "/home/$username/$i" 
+    rm -rf "/home/$username/$i"
     ln -sf "/home/$username/SSD/$i" "/home/$username/$i"
     chown -R $username:$username "/home/$username/$i"
   done
@@ -93,8 +93,9 @@ usermod -aG video $username
 
 # [Bluetooth]
 # For some reason, bluetooth is not enabled using systemctl
-ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/dbus-org.bluez.service
-mkdir -p /etc/systemd/system/bluetooth.target.wants; ln -sf /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.target.wants/bluetooth.service
+mkdir -p /etc/systemd/system/bluetooth.target.wants
+ln -s /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/dbus-org.bluez.service
+ln -s /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.target.wants/bluetooth.service
 
 # [QEMU]
 yes | pacman -S --noprogressbar --needed --disable-download-timeout qemu-full virt-manager virt-viewer vde2 bridge-utils openbsd-netcat libguestfs iptables-nft dnsmasq nftables
@@ -151,14 +152,14 @@ chown -R $username:$username /home/$username/.config/kitty
 # [GTK]
 # Theme
 curl -o /home/$username/.themes/dracula.zip --create-dirs "https://github.com/dracula/gtk/archive/master.zip" -L
-unzip -q /home/$username/.themes/dracula.zip
+unzip -q /home/$username/.themes/dracula.zip -d /home/$username/.themes
 mv /home/$username/.themes/gtk-master /home/$username/.themes/Dracula
 rm /home/$username/.themes/dracula.zip
 cp -r /home/$username/.themes/Dracula /usr/share/themes/Dracula
 chown -R $username:$username /home/$username/.themes
 # Icons
 curl -o /home/$username/.icons/dracula.zip --create-dirs "https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip" -L
-unzip -q /home/$username/.icons/dracula.zip
+unzip -q /home/$username/.icons/dracula.zip -d /home/$username/.icons
 mv /home/$username/.icons/dracula-icons-main /home/$username/.icons/Dracula
 rm /home/$username/.icons/dracula.zip
 cp -r /home/$username/.icons/Dracula /usr/share/icons/Dracula
