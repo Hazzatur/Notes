@@ -37,7 +37,7 @@ EOT
   mount -a
 
   # [Monitor config]
-  curl -o /etc/X11/edid.bin --create-dirs https://raw.githubusercontent.com/Hazzatur/Notes/main/edid.bin
+  curl -o /etc/X11/edid.bin --create-dirs "https://raw.githubusercontent.com/Hazzatur/Notes/main/edid.bin"
   mkdir -p /home/$username/.screenlayout
   tee -a /home/$username/.screenlayout/monitor.sh > /dev/null <<EOT
 #!/bin/sh
@@ -135,29 +135,29 @@ systemctl enable systemd-resolved.service
 chsh -s /usr/bin/zsh $username
 mkdir -p /home/$username/.oh-my-zsh-custom/{themes,plugins,completions}
 mkdir -p /home/$username/.config/kitty
-git clone https://github.com/romkatv/powerlevel10k.git /home/$username/.oh-my-zsh-custom/themes/powerlevel10k
-git clone https://github.com/esc/conda-zsh-completion /home/$username/.oh-my-zsh-custom/plugins/conda-zsh-completion
-git clone https://github.com/Aloxaf/fzf-tab /home/$username/.oh-my-zsh-custom/plugins/fzf-tab
-git clone https://github.com/zsh-users/zsh-autosuggestions /home/$username/.oh-my-zsh-custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions /home/$username/.oh-my-zsh-custom/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$username/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting
-curl https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe > /home/$username/.oh-my-zsh-custom/completions/_windscribe
-curl https://cheat.sh/:zsh > /home/$username/.oh-my-zsh-custom/completions/_cheat
-curl https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf > /home/$username/.config/kitty/dracula.conf
-curl https://raw.githubusercontent.com/dracula/kitty/master/diff.conf > /home/$username/.config/kitty/diff.conf
+git clone "https://github.com/romkatv/powerlevel10k.git" /home/$username/.oh-my-zsh-custom/themes/powerlevel10k
+git clone "https://github.com/esc/conda-zsh-completion" /home/$username/.oh-my-zsh-custom/plugins/conda-zsh-completion
+git clone "https://github.com/Aloxaf/fzf-tab" /home/$username/.oh-my-zsh-custom/plugins/fzf-tab
+git clone "https://github.com/zsh-users/zsh-autosuggestions" /home/$username/.oh-my-zsh-custom/plugins/zsh-autosuggestions
+git clone "https://github.com/zsh-users/zsh-completions" /home/$username/.oh-my-zsh-custom/plugins/zsh-completions
+git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" /home/$username/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting
+curl "https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe" > /home/$username/.oh-my-zsh-custom/completions/_windscribe
+curl "https://cheat.sh/:zsh" > /home/$username/.oh-my-zsh-custom/completions/_cheat
+curl "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf" > /home/$username/.config/kitty/dracula.conf
+curl "https://raw.githubusercontent.com/dracula/kitty/master/diff.conf" > /home/$username/.config/kitty/diff.conf
 chown -R $username:$username /home/$username/.oh-my-zsh-custom
 chown -R $username:$username /home/$username/.config/kitty
 
 # [GTK]
 # Theme
-curl -o /home/$username/.themes/dracula.zip --create-dirs https://github.com/dracula/gtk/archive/master.zip -L
+curl -o /home/$username/.themes/dracula.zip --create-dirs "https://github.com/dracula/gtk/archive/master.zip" -L
 unzip -q /home/$username/.themes/dracula.zip
 mv /home/$username/.themes/gtk-master /home/$username/.themes/Dracula
 rm /home/$username/.themes/dracula.zip
 cp -r /home/$username/.themes/Dracula /usr/share/themes/Dracula
 chown -R $username:$username /home/$username/.themes
 # Icons
-curl -o /home/$username/.icons/dracula.zip --create-dirs https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip -L
+curl -o /home/$username/.icons/dracula.zip --create-dirs "https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip" -L
 unzip -q /home/$username/.icons/dracula.zip
 mv /home/$username/.icons/dracula-icons-main /home/$username/.icons/Dracula
 rm /home/$username/.icons/dracula.zip
@@ -165,17 +165,17 @@ cp -r /home/$username/.icons/Dracula /usr/share/icons/Dracula
 chown -R $username:$username /home/$username/.icons
 
 # [Ansible]
-[ -d /home/$username/Personal/ansible ] || git clone https://github.com/Hazzatur/ansible.git /home/$username/Personal/ansible
-git --git-dir /home/$username/Personal/ansible/.git remote set-url origin git@github.com:Hazzatur/ansible.git
+[ -d /home/$username/Personal/ansible ] || git clone "https://github.com/Hazzatur/ansible.git" /home/$username/Personal/ansible
+git --git-dir /home/$username/Personal/ansible/.git remote set-url origin "git@github.com:Hazzatur/ansible.git"
 chown -R $username:$username /home/$username/Personal/ansible
 
 # [After install]
-curl /home/$username/post-install.sh https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh > /home/$username/post-install.sh
+curl "https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh" > /home/$username/post-install.sh
 sed -i "s/isDesktop=.*/isDesktop=\"$isDesktop\"/g" /home/$username/post-install.sh
 chmod +x /home/$username/post-install.sh
 chown $username:$username /home/$username/post-install.sh
 
 # [Cleanup]
 # steam install this as dependency but it breaks nvidia
-pacman -R amdvlk lib32-amdvlk
+pacman -R --noconfirm --noprogressbar amdvlk lib32-amdvlk
 
