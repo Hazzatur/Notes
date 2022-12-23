@@ -28,6 +28,7 @@ sudo cp $HOME/Pictures/Wallpapers/custom.png /usr/share/backgrounds/custom.png
 sudo sed -i "s,background=.*,background=/usr/share/backgrounds/custom.png,g" /etc/lightdm/slick-greeter.conf
 sudo sed -i "s,show-power=.*,show-power=true,g" /etc/lightdm/slick-greeter.conf
 sudo sed -i "s,background-color=.*,background-color=#000000,g" /etc/lightdm/slick-greeter.conf
+sudo sed -i "s,cursor-theme-name=.*,cursor-theme-name=Adwaita,g" /etc/lightdm/slick-greeter.conf
 ```
 
 ##### Mount drives

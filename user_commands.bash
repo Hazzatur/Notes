@@ -82,6 +82,7 @@ chmod 755 /usr/share/backgrounds/custom.png
 sed -i "s,background=.*,background=/usr/share/backgrounds/custom.png,g" /etc/lightdm/slick-greeter.conf
 sed -i "s,show-power=.*,show-power=true,g" /etc/lightdm/slick-greeter.conf
 sed -i "s,background-color=.*,background-color=#000000,g" /etc/lightdm/slick-greeter.conf
+sed -i "s,cursor-theme-name=.*,cursor-theme-name=Adwaita,g" /etc/lightdm/slick-greeter.conf
 
 # [Docker]
 usermod -aG docker $username
