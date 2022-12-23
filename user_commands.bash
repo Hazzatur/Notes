@@ -92,12 +92,6 @@ systemctl enable containerd.service
 # [OBS]
 usermod -aG video $username
 
-# [Bluetooth]
-# For some reason, bluetooth is not enabled using systemctl
-mkdir -p /etc/systemd/system/bluetooth.target.wants
-ln -s /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/dbus-org.bluez.service
-ln -s /usr/lib/systemd/system/bluetooth.service /etc/systemd/system/bluetooth.target.wants/bluetooth.service
-
 # [QEMU]
 yes | pacman -S --noprogressbar --needed --disable-download-timeout qemu-full virt-manager virt-viewer vde2 bridge-utils openbsd-netcat libguestfs iptables-nft dnsmasq nftables
 
@@ -136,13 +130,8 @@ systemctl enable systemd-resolved.service
 # [ZSH]
 usermod -s /bin/zsh $username
 
-# [Ansible]
-[ -d /home/$username/Personal/ansible ] || git clone "https://github.com/Hazzatur/ansible.git" /home/$username/Personal/ansible
-git --git-dir /home/$username/Personal/ansible/.git remote set-url origin "git@github.com:Hazzatur/ansible.git"
-chown -R $username:$username /home/$username/Personal/ansible
-
 # [After install]
-curl -fsSL "https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh" > /home/$username/post-install.sh
+curl -s "https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh" > /home/$username/post-install.sh
 sed -i "s/isDesktop=.*/isDesktop=\"$isDesktop\"/g" /home/$username/post-install.sh
 chmod +x /home/$username/post-install.sh
 chown $username:$username /home/$username/post-install.sh

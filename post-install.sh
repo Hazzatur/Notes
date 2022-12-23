@@ -96,3 +96,9 @@ for config in "${_configs[@]}"; do
   fi
 done
 
+# ansible
+[ -d "$HOME/Personal/ansible" ] || git clone "https://github.com/Hazzatur/ansible.git" "/home/$username/Personal/ansible"
+git --git-dir "$HOME/Personal/ansible/.git" remote set-url origin "git@github.com:Hazzatur/ansible.git"
+
+# bluetooth
+sudo systemctl enable --now bluetooth.service
