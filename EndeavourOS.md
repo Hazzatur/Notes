@@ -132,7 +132,11 @@ xclip \
 xsv \
 xcolor \
 xournalpp \
-zsh
+zsh \
+zsh-autosuggestions \
+zsh-completions \
+zsh-syntax-highlighting \
+zsh-theme-powerlevel10k
 ```
 
 ```bash
@@ -150,6 +154,10 @@ authy \
 birdtray \
 charles \
 cht.sh-git \
+dracula-gtk-theme \
+dracula-icons-git \
+dracula-xresources-git \
+fzf-tab-git \
 gitkraken \
 google-chrome \
 i3lock-color \
@@ -159,6 +167,7 @@ mugshot \
 ncurses5-compat-libs \
 nvidia-container-toolkit \
 obs-backgroundremoval \
+oh-my-zsh-git \
 ookla-speedtest-bin \
 postman-bin \
 spotify \
@@ -182,9 +191,6 @@ yay -S xpadneo-dkms-git # Bluetooth
 ```bash
 curl https://get.volta.sh | bash -s -- --skip-setup
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 ##### Flutter
@@ -196,13 +202,7 @@ sudo usermod -aG flutterusers $USER
 ##### ZSH
 ```bash
 yay -S ttf-meslo-nerd-font-powerlevel10k
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh-custom}/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh-custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh-custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:-~/.oh-my-zsh-custom}/plugins/conda-zsh-completion
-git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh-custom}/plugins/fzf-tab
 curl -o ~/.oh-my-zsh-custom/completions/_windscribe --create-dirs https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe
 curl -o ~/.oh-my-zsh-custom/completions/_cht --create-dirs https://cheat.sh/:zsh
 curl -o ~/.config/kitty/dracula.conf --create-dirs https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
@@ -381,24 +381,6 @@ pacman -Qs vulkan
 sudo rm /etc/resolv.conf
 sudo ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
 sudo systemctl enable --now systemd-resolved.service
-```
-
-#### GTK
-```bash
-# Theme
-curl -o ~/.themes/dracula.zip --create-dirs https://github.com/dracula/gtk/archive/master.zip -L
-cd ~/.themes
-unzip -q dracula.zip
-mv gtk-master Dracula
-rm dracula.zip
-sudo cp -r ~/.themes/Dracula /usr/share/themes/Dracula
-# Icons
-curl -o ~/.icons/dracula.zip --create-dirs https://github.com/m4thewz/dracula-icons/archive/refs/heads/main.zip -L
-cd ~/.icons
-unzip -q dracula.zip
-mv dracula-icons-main Dracula
-rm dracula.zip
-sudo cp -r ~/.icons/Dracula /usr/share/icons/Dracula
 ```
 
 #### Bat
