@@ -192,6 +192,7 @@ yay -S xpadneo-dkms-git # Bluetooth
 ```bash
 curl https://get.volta.sh | bash -s -- --skip-setup
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 ```
 
 ##### Flutter
@@ -388,3 +389,12 @@ sudo systemctl enable --now systemd-resolved.service
 ```
 bat cache --build
 ```
+
+#### fzf-tab
+```
+  # Fix, line 38
+  if is-at-least 5.9 && (( $#_mesg != 0 )); then
+    builtin compadd -x $_mesg
+  fi
+```
+
