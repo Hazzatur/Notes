@@ -21,6 +21,7 @@ i3lock-color \
 jetbrains-toolbox \
 megasync-bin \
 mugshot \
+navi-bin \
 ncurses5-compat-libs \
 nvidia-container-toolkit \
 obs-backgroundremoval \
