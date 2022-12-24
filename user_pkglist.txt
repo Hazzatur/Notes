@@ -33,6 +33,7 @@ libsecret
 lollypop
 lutris
 maven
+mdcat
 neovim
 noto-fonts-emoji
 obs-studio

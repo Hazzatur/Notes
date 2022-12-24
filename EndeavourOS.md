@@ -108,6 +108,7 @@ lesspipe \
 libsecret \
 lollypop \
 maven \
+mdcat \
 neovim \
 noto-fonts-emoji \
 obs-studio \
