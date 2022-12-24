@@ -35,7 +35,6 @@ rpcs3-bin \
 rtl8192eu-dkms \
 spotify \
 thunar-megasync-bin \
-thunar-shares-plugin \
 ttf-meslo-nerd-font-powerlevel10k \
 ventoy-bin \
 visual-studio-code-bin \
@@ -72,6 +71,7 @@ _completions=(
   "https://raw.githubusercontent.com/tjquillan/zsh-windscribe-completions/master/_windscribe"
   "https://cheat.sh/:zsh"
   "https://raw.githubusercontent.com/conda-incubator/conda-zsh-completion/master/_conda"
+  "https://github.com/sharkdp/fd/blob/master/contrib/completion/_fd"
 )
 
 for completion in "${_completions[@]}"; do
@@ -97,7 +97,7 @@ for config in "${_configs[@]}"; do
 done
 
 # ansible
-[ -d "$HOME/Personal/ansible" ] || git clone "https://github.com/Hazzatur/ansible.git" "/home/$username/Personal/ansible"
+[ -d "$HOME/Personal/ansible" ] || git clone "https://github.com/Hazzatur/ansible.git" "$HOME/Personal/ansible"
 git --git-dir "$HOME/Personal/ansible/.git" remote set-url origin "git@github.com:Hazzatur/ansible.git"
 
 # bluetooth

@@ -128,7 +128,7 @@ ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
 systemctl enable systemd-resolved.service
 
 # [ZSH]
-usermod -s /bin/zsh $username
+usermod -s /usr/bin/zsh $username
 
 # [After install]
 curl -s "https://raw.githubusercontent.com/Hazzatur/Notes/main/post-install.sh" > /home/$username/post-install.sh

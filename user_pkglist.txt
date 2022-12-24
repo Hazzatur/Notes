@@ -47,6 +47,7 @@ perl-anyevent-i3
 perl-image-exiftool
 ppsspp
 python-pip
+python-kivy
 qbittorrent
 ranger
 retroarch

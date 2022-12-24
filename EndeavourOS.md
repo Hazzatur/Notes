@@ -172,7 +172,6 @@ oh-my-zsh-git \
 ookla-speedtest-bin \
 postman-bin \
 spotify \
-thunar-shares-plugin \
 ventoy-bin \
 visual-studio-code-bin \
 watchman-bin \
