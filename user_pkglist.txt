@@ -46,6 +46,7 @@ pcsx2
 pdfarranger
 perl-anyevent-i3
 perl-image-exiftool
+polybar
 ppsspp
 python-pip
 python-kivy

@@ -103,6 +103,3 @@ git --git-dir "$HOME/Personal/ansible/.git" remote set-url origin "git@github.co
 
 # bluetooth
 sudo systemctl enable --now bluetooth.service
-
-# ranger
-git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons

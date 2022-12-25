@@ -119,6 +119,7 @@ picom \
 pdfarranger \
 perl-anyevent-i3 \
 perl-image-exiftool \
+polybar \
 python-pip \
 qbittorrent \
 ranger \
