@@ -5,14 +5,13 @@ isDesktop="true"
 yay -S anaconda \
 authy \
 birdtray \
-cemu-wine \
+cemu \
 charles \
 cht.sh-git \
 citra-qt-git \
 dracula-gtk-theme \
 dracula-icons-git \
 dracula-xresources-git \
-dolphin-emu-git \
 flutter \
 fzf-tab-git \
 gitkraken \
@@ -31,7 +30,6 @@ polymc \
 postman-bin \
 proton-ge-custom-bin \
 protontricks \
-ptxconf-git \
 rpcs3-bin \
 rtl8192eu-dkms \
 spotify \
@@ -47,7 +45,8 @@ wps-office-mime \
 yuzu-mainline-bin
 
 if [ $isDesktop = "true" ]; then
-  yay -S xone-dkms
+  yay -S xone-dkms \
+  ptxconf-git
 else
   yay -S xpadneo-dkms-git
 fi
@@ -83,6 +82,8 @@ for completion in "${_completions[@]}"; do
     fi
   fi
 done
+
+volta completions zsh > "$ZSH_CUSTOM/completions/_volta"
 
 # kitty
 export KITTY_CONFIG_DIRECTORY="$HOME/.config/kitty"

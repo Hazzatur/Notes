@@ -12,6 +12,7 @@ csvkit
 discord
 docker
 docker-compose 
+dolphin-emu
 exa
 fd
 filelight

@@ -273,15 +273,14 @@ yay -S ttf-ms-win10
 ```bash
 sudo pacman -S gamemode lib32-gamemode
 
-sudo pacman -S retroarch \
+sudo pacman -S dolphin-emu \
+retroarch \
 ppsspp \
 pcsx2
 
 yay -S yuzu-mainline-bin \
 rpcs3-bin \
-# Replace with 'cemu' or 'cemu-git' when stable
-cemu-wine \
-dolphin-emu-git \
+cemu \
 citra-qt-git
 
 yay -S polymc
