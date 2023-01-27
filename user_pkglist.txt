@@ -43,7 +43,6 @@ okular
 opera
 opera-ffmpeg-codecs
 picom
-pcsx2
 pdfarranger
 perl-anyevent-i3
 perl-image-exiftool

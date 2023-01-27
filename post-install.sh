@@ -21,11 +21,11 @@ jetbrains-toolbox \
 megasync-bin \
 mugshot \
 navi-bin \
-ncurses5-compat-libs \
 nvidia-container-toolkit \
 obs-backgroundremoval \
 oh-my-zsh-git \
 ookla-speedtest-bin \
+pcsx2 \
 polymc \
 postman-bin \
 proton-ge-custom-bin \

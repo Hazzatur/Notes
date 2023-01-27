@@ -1,5 +1,3 @@
-[Artemis_nova_is_here](https://www.reddit.com/r/EndeavourOS/comments/xe6jv1/artemis_nova_is_here/)
-
 ##### LTS Kernel
 ```bash
 sudo pacman -S linux-lts linux-lts-headers
@@ -168,7 +166,6 @@ jetbrains-toolbox \
 megasync-bin thunar-megasync-bin \
 mugshot \
 navi-bin \
-ncurses5-compat-libs \
 nvidia-container-toolkit \
 obs-backgroundremoval \
 oh-my-zsh-git \
@@ -275,13 +272,13 @@ sudo pacman -S gamemode lib32-gamemode
 
 sudo pacman -S dolphin-emu \
 retroarch \
-ppsspp \
-pcsx2
+ppsspp
 
 yay -S yuzu-mainline-bin \
 rpcs3-bin \
 cemu \
-citra-qt-git
+citra-qt-git \
+pcsx2
 
 yay -S polymc
 
@@ -387,15 +384,26 @@ sudo systemctl enable --now systemd-resolved.service
 ```
 
 #### Bat
-```
+```bash
 bat cache --build
 ```
 
 #### fzf-tab
-```
+```bash
   # Fix, line 38
   if is-at-least 5.9 && (( $#_mesg != 0 )); then
     builtin compadd -x $_mesg
   fi
 ```
 
+#### after grub update
+```bash
+sudo grub-install --no-nvram
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+#### ncurses5-compat-libs
+```bash
+# https://stackoverflow.com/questions/60714842/manjaro-install-ncurses5-compat-libs
+sudo link /lib/libtinfo.so.6 /lib/libtinfo.so.5
+```
