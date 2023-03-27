@@ -388,14 +388,6 @@ sudo systemctl enable --now systemd-resolved.service
 bat cache --build
 ```
 
-#### fzf-tab
-```bash
-  # Fix, line 38
-  if is-at-least 5.9 && (( $#_mesg != 0 )); then
-    builtin compadd -x $_mesg
-  fi
-```
-
 #### after grub update
 ```bash
 sudo grub-install --no-nvram
