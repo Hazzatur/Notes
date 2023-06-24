@@ -79,6 +79,7 @@ yay -S proton-ge-custom-bin protontricks
 sudo pacman -S ansible \
 bat \
 blueman \
+broot \
 btop \
 calibre \
 catfish \
