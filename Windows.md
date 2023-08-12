@@ -1,3 +1,23 @@
+#### Git
+```batch
+winget install -e --id Git.Git
+```
+
+#### Powershell
+```batch
+winget install --id Microsoft.Powershell --source winget
+```
+
+#### Scoop
+```batch
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
+irm get.scoop.sh | iex
+```
+
+```batch
+scoop install main/7zip extras/anaconda3 extras/audacity extras/authy main/bat main/btop-lhm main/cacert nonportable/calibre-np extras/cheat-engine main/cht main/cowsay main/curl main/delta extras/discord extras/draw.io main/fd nonportable/file-converter-np main/fzf main/gcc extras/gitkraken main/gzip extras/jetbrains-toolbox extras/keystore-explorer extras/lazygit main/less main/make main/mdcat extras/megasync nerd-fonts/Meslo-NF nerd-fonts/Meslo-NF-Mono main/nano main/navi extras/neovide main/neovim extras/obs-studio extras/obsidian main/oh-my-posh java/openjdk11 extras/pdfarranger extras/psfzf main/ripgrep main/rustup main/scrcpy main/speedtest-cli main/sudo main/tar main/unzip extras/vlc main/volta extras/vscode extras/wezterm main/wget main/which
+```
+
 #### Steam game not starting
 
 ```batch
