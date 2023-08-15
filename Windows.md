@@ -1,24 +1,53 @@
-#### Git
-```batch
+### Git
+```powershell
 winget install -e --id Git.Git
+scoop install posh-git
+Add-PoshGitToProfile
 ```
 
-#### Powershell
-```batch
+### Powershell
+```powershell
 winget install --id Microsoft.Powershell --source winget
 ```
 
-#### Scoop
-```batch
+### Scoop
+```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser # Optional: Needed to run a remote script the first time
 irm get.scoop.sh | iex
 ```
 
-```batch
-scoop install main/7zip extras/anaconda3 extras/audacity extras/authy main/bat main/btop-lhm main/cacert nonportable/calibre-np extras/cheat-engine main/cht main/cowsay main/curl main/delta extras/discord extras/draw.io main/fd nonportable/file-converter-np main/fzf main/gcc extras/gitkraken main/gzip extras/jetbrains-toolbox extras/keystore-explorer extras/lazygit main/less main/make main/mdcat extras/megasync nerd-fonts/Meslo-NF nerd-fonts/Meslo-NF-Mono main/nano main/navi extras/neovide main/neovim extras/obs-studio extras/obsidian main/oh-my-posh java/openjdk11 extras/pdfarranger extras/psfzf main/ripgrep main/rustup main/scrcpy main/speedtest-cli main/sudo main/tar main/unzip extras/vlc main/volta extras/vscode extras/wezterm main/wget main/which
+```powershell
+scoop bucket add extras
+scoop bucket add nerd-fonts
+scoop bucket add nonportable
+scoop bucket add java
+scoop bucket add games
 ```
 
-#### Steam game not starting
+```powershell
+scoop install main/7zip extras/anaconda3 extras/audacity extras/authy main/bat main/btop-lhm nonportable/calibre-np extras/cheat-engine main/cht main/cowsay main/curl main/delta extras/discord extras/draw.io main/fd main/fzf main/gcc extras/gitkraken main/grep main/gzip extras/jetbrains-toolbox extras/krita extras/lazygit main/less main/make main/mdcat extras/megasync nerd-fonts/Meslo-NF nerd-fonts/Meslo-NF-Mono games/minecraft main/nano main/navi extras/neovide main/neovim extras/obs-studio extras/obsidian main/oh-my-posh java/openjdk11 extras/paint.net extras/pdfarranger extras/psfzf extras/qbittorrent main/ripgrep main/rustup main/scrcpy main/speedtest-cli main/sudo main/tar extras/thunderbird main/unzip extras/vlc main/volta extras/vscode extras/wezterm main/wget main/which extras/xournalpp games/yuzu
+```
+
+```powershell
+sudo scoop install nonportable/file-converter-np nonportable/winrar-np
+```
+
+### Thunderbird
+> %APPDATA%\Thunderbird\Profiles\
+
+#### Birdtray
+```powershell
+$downloadUrl = (Invoke-WebRequest -Uri "https://api.github.com/repos/gyunaev/birdtray/releases/latest" -UseBasicParsing).Content | ConvertFrom-Json | 
+    Select-Object -ExpandProperty assets | 
+    Where-Object { $_.name -like "Birdtray-*-Win-x64.exe" } | 
+    Select-Object -ExpandProperty browser_download_url
+
+$fileName = [System.IO.Path]::GetFileName($downloadUrl)
+
+Invoke-WebRequest -Uri $downloadUrl -OutFile $fileName
+```
+
+### Steam game not starting
 
 ```batch
 To start, open your Crysis Launch Properties. 
@@ -95,7 +124,7 @@ if !count! GTR 0 ( echo !count! item^(s^) removed! ) else ( echo No items remove
 pause
 ```
 
-#### Clear browsers PS
+### Clear browsers PS
 
 ```powershell
 Write-Host -ForegroundColor yellow "#######################################################"
