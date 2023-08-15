@@ -43,8 +43,20 @@ $downloadUrl = (Invoke-WebRequest -Uri "https://api.github.com/repos/gyunaev/bir
     Select-Object -ExpandProperty browser_download_url
 
 $fileName = [System.IO.Path]::GetFileName($downloadUrl)
+$downloadPath = Join-Path $env:USERPROFILE "Downloads\$fileName"
 
-Invoke-WebRequest -Uri $downloadUrl -OutFile $fileName
+Invoke-WebRequest -Uri $downloadUrl -OutFile $downloadPath
+
+Start-Process -FilePath $downloadPath
+
+# Wait for the process to complete (adjust the timeout if needed)
+$process = Get-Process -Name $fileName.Replace('.exe', '') -ErrorAction SilentlyContinue
+if ($process) {
+    $process.WaitForExit(600)  # Wait up to 10 minutes (600 seconds)
+}
+
+# Delete the downloaded file
+Remove-Item -Path $downloadPath -Force
 ```
 
 ### Steam game not starting
