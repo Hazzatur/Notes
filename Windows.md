@@ -1,8 +1,6 @@
 ### Git
 ```powershell
 winget install -e --id Git.Git
-scoop install posh-git
-Add-PoshGitToProfile
 ```
 
 ### Powershell
@@ -25,7 +23,11 @@ scoop bucket add games
 ```
 
 ```powershell
-scoop install main/7zip extras/anaconda3 extras/audacity extras/authy main/bat main/btop-lhm nonportable/calibre-np extras/cheat-engine main/cht main/cowsay main/curl main/delta extras/discord extras/draw.io main/fd main/fzf main/gcc extras/gitkraken main/grep main/gzip extras/jetbrains-toolbox extras/krita extras/lazygit main/less main/make main/mdcat extras/megasync nerd-fonts/Meslo-NF nerd-fonts/Meslo-NF-Mono games/minecraft main/nano main/navi extras/neovide main/neovim extras/obs-studio extras/obsidian main/oh-my-posh java/openjdk11 extras/paint.net extras/pdfarranger extras/psfzf extras/qbittorrent main/ripgrep main/rustup main/scrcpy main/speedtest-cli main/sudo main/tar extras/thunderbird main/unzip extras/vlc main/volta extras/vscode extras/wezterm main/wget main/which extras/xournalpp games/yuzu
+scoop install main/7zip extras/anaconda3 extras/audacity extras/authy main/bat main/btop-lhm nonportable/calibre-np extras/cheat-engine main/cht main/cowsay main/curl main/delta extras/discord extras/draw.io main/fd main/fzf main/gcc extras/gitkraken main/grep main/gzip extras/jetbrains-toolbox extras/krita extras/lazygit main/less main/make main/mdcat extras/megasync nerd-fonts/Meslo-NF nerd-fonts/Meslo-NF-Mono games/minecraft main/nano main/navi extras/neovide main/neovim extras/obs-studio extras/obsidian main/oh-my-posh java/openjdk11 extras/paint.net extras/pdfarranger extras/posh-git extras/psfzf extras/qbittorrent main/ripgrep main/rustup main/scrcpy main/speedtest-cli main/sudo main/tar extras/thunderbird main/unzip extras/vlc main/volta extras/vscode extras/wezterm main/wget main/which extras/xournalpp games/yuzu
+```
+
+```powershell
+Add-PoshGitToProfile
 ```
 
 ```powershell
@@ -136,7 +138,7 @@ if !count! GTR 0 ( echo !count! item^(s^) removed! ) else ( echo No items remove
 pause
 ```
 
-### Clear browsers PS
+### Clear browsers
 
 ```powershell
 Write-Host -ForegroundColor yellow "#######################################################"
