@@ -68,7 +68,7 @@ sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-setti
 WINE DEPENDENCY HELL:
 sudo pacman -Sy
 sudo pacman -S wine-staging winetricks
-sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
+sudo pacman -S giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox
 
 sudo pacman -S steam
 yay -S proton-ge-custom-bin protontricks
@@ -79,6 +79,7 @@ yay -S proton-ge-custom-bin protontricks
 sudo pacman -S ansible \
 bat \
 blueman \
+broot \
 btop \
 calibre \
 catfish \
@@ -88,16 +89,19 @@ clang \
 copyq \
 csvkit \
 discord \
-docker docker-compose  \
-exa \
+docker \
+docker-compose  \
+eza \
 fd \
 filelight \
 flameshot \
+fzf \
 gimp \
 git-delta \
-gnome-keyring seahorse \
+gnome-keyring \
 gsimplecal \
-jdk8-openjdk jdk11-openjdk jdk-openjdk \
+jdk-openjdk \
+jdk17-openjdk \
 krita \
 kitty \
 kitty-shell-integration \
@@ -112,17 +116,20 @@ noto-fonts-emoji \
 obs-studio \
 obsidian \
 okular \
-opera opera-ffmpeg-codecs \
+opera \
+opera-ffmpeg-codecs \
 picom \
 pdfarranger \
 perl-anyevent-i3 \
 perl-image-exiftool \
 polybar \
 python-pip \
+python-kivy \
 qbittorrent \
 ranger \
 ripgrep \
 rustup \
+seahorse \
 scrcpy \
 stow \
 thunderbird \

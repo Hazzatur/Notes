@@ -1,0 +1,6 @@
+gamemode
+lib32-gamemode
+lutris
+dolphin-emu
+retroarch
+ppsspp
